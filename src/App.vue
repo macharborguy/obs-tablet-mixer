@@ -1,23 +1,19 @@
-<template>
-  <v-app>
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+<template lang="pug">
+v-app
+	v-main
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
+	name: 'App',
+	components: {},
+	data: ()=>({}),
 }
 </script>
+
+
+<style lang="stylus">
+body
+	background-color red
+</style>
