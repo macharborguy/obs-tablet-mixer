@@ -1,0 +1,1 @@
+export default async (ms=1000,...args)=>new Promise((resolve,reject)=>setTimeout(()=>resolve(...args),ms))
