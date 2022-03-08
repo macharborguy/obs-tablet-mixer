@@ -1,15 +1,22 @@
+
 <template lang="pug">
 v-app
 	v-main
-		v-container.py-5
-			v-row.py-5
-				v-col
+		v-container(fluid)
+			v-row
+				v-col(v-for="device of $store.state.devices")
 					.FaderBlock
 						.wrap
 							v-row
-								v-col(cols=6)
-									v-slider(direction="vertical" label="Mic" :thumb-size="36")
-									.label XLR Mic
+								v-col(cols=6).pt-4
+									v-slider(
+										v-on:touchstart="startHandler"
+										v-on:touchend="endHandler"
+										direction="vertical"
+										label="Mic"
+										:thumb-size="36"
+									)
+									.label {{ device.name }}
 								v-col(cols=6).py-2.pr-1
 									v-btn(
 										v-on:touchstart="startHandler",
@@ -21,37 +28,30 @@ v-app
 										variant="contained"
 									) LIVE
 									v-spacer.mb-2
-									v-btn(
-										v-on:touchstart="startHandler",
-										v-on:touchend="endHandler",
-										v-on:mousedown="startHandler",
-										v-on:mouseup="endHandler",
-										@click="clickHandler",
-										color="red"
-										append-icon="mdi-headphones"
-									) To
-									v-spacer.mb-2
-									v-btn(
-										v-on:touchstart="startHandler",
-										v-on:touchend="endHandler",
-										v-on:mousedown="startHandler",
-										v-on:mouseup="endHandler",
-										@click="clickHandler",
-										color="green"
-										append-icon="mdi-phone-voip"
-									) To
-									v-spacer.mb-2
-									v-btn(
-										v-on:touchstart="startHandler",
-										v-on:touchend="endHandler",
-										v-on:mousedown="startHandler",
-										v-on:mouseup="endHandler",
-										@click="clickHandler",
-										color="green"
-										append-icon="mdi-gamepad-square"
-									) To
-									v-spacer.mb-2
-									span(v-on:touchstart="startHandler",) {{ yay }}
+									
+
+									v-divider.mb-2
+
+									template(v-for="mon of device.mons")
+										v-btn(
+											v-on:touchstart="startHandler",
+											v-on:touchend="endHandler",
+											@click="clickHandler",
+											color="green"
+											:append-icon="mon.icon"
+										) To
+										v-spacer.mb-2
+									
+									v-divider.mb-2
+
+									template(v-for="ndiout of device.ndiout")
+										v-btn(
+											v-on:touchstart="startHandler",
+											v-on:touchend="endHandler",
+											@click="clickHandler",
+											color="green"
+											:append-icon="ndiout.icon"
+										) NDI
 
 
 
@@ -132,20 +132,19 @@ html, body, html body, .v-application
 
 
 <script>
+/* eslint-disable no-unused-vars */
 const { log } = console
 
 
 
 const ClickDownSnd = new Audio('./click-down.wav')
 const ClickUpSnd = new Audio('./click-up.wav')
-
+;[ClickDownSnd,ClickUpSnd].forEach(snd=>{ snd.volume=0.3 })
 
 
 const Application = {
 	name: 'App',
-	data: () => ({
-		yay : false
-	}),
+	data: () => ({}),
 
 	components : {},
 
@@ -157,9 +156,7 @@ const Application = {
 		endHandler () {
 			ClickUpSnd.play()
 		},
-		clickHandler () {
-
-		}
+		clickHandler () {}
 	},
 	
 	props : [],
@@ -201,7 +198,9 @@ const Application = {
 	'activated',
 	'deactivated',
 	'serverPrefetch'
-].forEach(name=>Application[name] = (...args)=>log(name, args))
+].forEach(name=>Application[name] = (...args)=>{
+	// log(name, args)
+})
 
 export default Application
 </script>
