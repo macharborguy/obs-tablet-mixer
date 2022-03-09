@@ -1,6 +1,12 @@
 
 <template lang="pug">
 v-app
+	//- v-system-bar(app dark color="red lighten-2")
+	//- 	v-spacer
+	//- 	v-icon mdi-wifi-strength-4
+	//- 	v-icon mdi-signal-cellular-outline
+	//- 	v-icon mdi-battery
+	//- 	span 12:30
 	v-main
 		div.d-flex.flex-row.ChannelRow
 			channel-block(v-for="device of ChannelBlocks" :device="device")
@@ -21,6 +27,13 @@ body
 html, body, html body, .v-application
 	margin 0
 	padding 0
+
+.v-system-bar
+	background-color black
+	color rgb(125,125,125)
+
+	.mdi.v-icon
+		color rgb(125,125,125)
 
 </style>
 
