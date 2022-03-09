@@ -10,6 +10,7 @@ export default (m=>{
 		.then(()=>console.log('connected'))
 		.catch(err=>console.error(err))
 
+	socket.setMaxListeners(200)
 
 	m.install = (App, options) => {
 		App.config.globalProperties.$OBSWS = socket

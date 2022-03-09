@@ -1,5 +1,5 @@
 <template lang="pug">
-div.MonitorOutGroup
+div.MonitorOutGroup(v-if="mons.length>0")
 	template(v-for="mon of mons")
 		monitor-out-button(:mon="mon" :device="device")
 	
@@ -47,7 +47,16 @@ export default {
 </script>
 
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+
+.MonitorOutGroup
+	background-color rgba(30,0,0,0.7)
+	border 1px solid rgba(0,0,0,0.3)
+	margin 0 5px 5px
+	padding 10px 0 0 0
+	border-radius 8px
+
+</style>
 
 <style lang="stylus"></style>
 

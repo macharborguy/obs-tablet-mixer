@@ -13,32 +13,27 @@
 					)
 				v-col(cols=6).py-2.pr-1.pt-4
 					audio-to-live(:device="device")
-					
 					v-spacer.mb-2
-					v-divider.mb-2
-
 					monitor-out-group(:mons="device.mons" :device="device")
-					
-					v-divider.mb-2
-
-					template(v-for="ndiout of device.ndiout")
-						v-btn(
-							color="green"
-							:append-icon="ndiout.icon"
-						) NDI
+					ndi-out-group(:ndiout="device.ndiout" :device="device")
+					ducking-group(:ducks="device.ducks" :device="device")
 </template>
 
 <script>
 
 import AudioToLive from './Buttons/Live'
+import DuckingGroup from './Buttons/Ducking'
 import MonitorGroup from './Buttons/Monitor-Out'
+import NDIOutGroup from './Buttons/NDI-Out'
 
 export default {
 	name : 'ChannelBlock',
 	_tag : 'channel-block',
 	components : {
-		[AudioToLive._tag] : AudioToLive,
-		[MonitorGroup._tag] : MonitorGroup
+		[AudioToLive._tag]	: AudioToLive,
+		[DuckingGroup._tag]	: DuckingGroup,
+		[MonitorGroup._tag]	: MonitorGroup,
+		[NDIOutGroup._tag]	: NDIOutGroup
 	},
 	props : ['device'],
 	data : ()=>({}),
@@ -53,21 +48,22 @@ export default {
 
 <style lang="stylus" scoped>
 .ChannelBlock
-	padding 20px 0 20px 20px
+	padding 10px 0 10px 20px
 
 	&:last-child
 		padding-right 20px
 
 .FaderBlock
-	width 220px !important
+	width 250px !important
 	margin-bottom 0
 	padding-bottom 0
 	padding 0
 	box-sizing border-box
-	box-shadow 0 2px 10px 2px black
 	border-radius 16px
-	border 5px solid #444444
+	border 2px solid #331111
+	padding 3px
 	background url('@/assets/wood.jpg')
+	background-size 120% 120%
 
 	.wrap
 		background-color rgba(255,255,150,0.4)
@@ -84,13 +80,14 @@ export default {
 		padding 0
 		margin 0
 		border 0
-		background-color rgba(0,0,0,0.9)
+		background-color rgba(20,0,0,0.7)
 		border-top-left-radius 10px
 		border-top-right-radius 10px
+		text-shadow 0 2px 3px black
 		
 		div
 			text-align center
-			color white
+			color rgb(170,170,170)
 			font-weight bolder
 			padding 3px
 

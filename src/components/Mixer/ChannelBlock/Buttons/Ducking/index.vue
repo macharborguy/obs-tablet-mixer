@@ -1,26 +1,25 @@
 <template lang="pug">
-div.NDIOutGroup(v-if="ndiout.length>0")
-	template(v-for="ndi of ndiout")
-		ndi-out-button(:device="device" :ndi="ndi")
+div.DuckingGroup(v-if="ducks.length>0")
+	template(v-for="duck of ducks")
+		ducking-button(:duck="duck" :device="device")
+	
 </template>
 
 <script>
-import NDIButton from './button.vue'
+import DuckingButton from './button.vue'
 import wait from '@/functions/wait'
-
 const { log } = console
 
 export default {
-	name : 'NDIOutGroup',
-	_tag : 'ndi-out-group',
-	
-	data : ()=>({}),
-	props : ['device','ndiout'],
+	name : 'DuckingGroup',
+	_tag : 'ducking-group',
 
 	components : {
-		[NDIButton._tag] : NDIButton,
+		[DuckingButton._tag] : DuckingButton,
 	},
-	
+	props : ['device','ducks'],
+	data : ()=>({}),
+
 	computed : {
 		SourceName () {
 			return {
@@ -31,12 +30,6 @@ export default {
 
 	async mounted () {
 		while (!this.$OBSWS._connected) await wait(50)
-		
-		this.$OBSWS.send('GetSourceFilters',{
-			...this.SourceName
-		}).then(({filters})=>{
-			this.emitter.emit('populate_initial_filter_data', filters)
-		})
 
 		this.$OBSWS.on('SourceFilterVisibilityChanged',(filter)=>{
 			if (filter.filterName.includes('Move')) return
@@ -48,13 +41,14 @@ export default {
 
 
 <style lang="stylus" scoped>
-.NDIOutGroup
+
+.DuckingGroup
 	background-color rgba(30,0,0,0.7)
 	border 1px solid rgba(0,0,0,0.3)
 	margin 0 5px 5px
 	padding 10px 0 0 0
 	border-radius 8px
-	
+
 </style>
 
 <style lang="stylus"></style>
