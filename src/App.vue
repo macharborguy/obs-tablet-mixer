@@ -3,7 +3,7 @@
 v-app
 	v-main
 		div.d-flex.flex-row.ChannelRow
-			channel-block(v-for="device of $store.state.devices" :device="device")
+			channel-block(v-for="device of ChannelBlocks" :device="device")
 		div.woodDivider
 </template>
 
@@ -56,7 +56,11 @@ const Application = {
 
 	components : {},
 
-	computed : {},
+	computed : {
+		ChannelBlocks () {
+			return [...this.$store.state.devices]
+		}
+	},
 	methods : {},
 	
 	props : [],

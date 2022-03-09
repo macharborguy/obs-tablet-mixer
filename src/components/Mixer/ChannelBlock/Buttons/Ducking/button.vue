@@ -82,6 +82,17 @@ export default {
 	}
 
 }
+
+
+
+export const store	= {
+	namespaced		: true,
+	state			: ()=>({}),
+	getters			: {},
+	actions			: {},
+	mutations		: {},
+	modules			: {}
+}
 </script>
 
 
