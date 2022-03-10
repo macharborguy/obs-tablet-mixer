@@ -8,7 +8,7 @@ import mitt from 'mitt'
 import Vue3TouchEvents from 'vue3-touch-events'
 import OBSWS from './plugins/obsws'
 
-import ChannelBlock from '@/components/Mixer/ChannelBlock'
+import ChannelRow from '@/components/Mixer/ChannelRow'
 
 
 
@@ -25,7 +25,7 @@ const Application = createApp(App)
 	.use(Vue3TouchEvents)
 
 
-;[ChannelBlock].forEach(comp=>Application.component(comp._tag, comp))
+;[ChannelRow].forEach(comp=>Application.component(comp._tag, comp))
 
 
 Application.config.globalProperties.emitter = emitter

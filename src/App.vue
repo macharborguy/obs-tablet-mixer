@@ -8,8 +8,7 @@ v-app
 	//- 	v-icon mdi-battery
 	//- 	span 12:30
 	v-main
-		div.d-flex.flex-row.ChannelRow
-			channel-block(v-for="device of ChannelBlocks" :device="device")
+		channel-row
 		div.leatherDivider
 </template>
 
@@ -40,11 +39,6 @@ html, body, html body, .v-application
 
 
 <style lang="stylus" scoped>
-.ChannelRow
-	width 100%
-	overflow hidden
-	overflow-x auto
-	background-color rgba(0,0,0,0.6)
 
 .leatherDivider
 	height 20px
@@ -60,34 +54,15 @@ html, body, html body, .v-application
 <script>
 const { log } = console
 
-
-
 const Application = {
 	name: 'App',
 	data: () => ({}),
 
 	components : {},
-
-	computed : {
-		ChannelBlocks () {
-			return [...this.$store.state.devices]
-		}
-	},
-	methods : {},
 	
 	props : [],
 	mixins : [],
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
