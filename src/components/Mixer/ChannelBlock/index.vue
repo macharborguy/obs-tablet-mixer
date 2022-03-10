@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 <template lang="pug">
 .ChannelBlock
 	.FaderBlock
@@ -20,6 +30,7 @@
 </template>
 
 <script>
+
 
 import AudioToLive from './Buttons/Live'
 import DuckingGroup from './Buttons/Ducking'
@@ -48,10 +59,10 @@ export default {
 
 <style lang="stylus" scoped>
 .ChannelBlock
-	padding 10px 0 10px 20px
+	padding 0
 
 	&:last-child
-		padding-right 20px
+		padding-right 0
 
 .FaderBlock
 	width 250px !important
@@ -59,18 +70,14 @@ export default {
 	padding-bottom 0
 	padding 0
 	box-sizing border-box
-	border-radius 16px
-	border 2px solid #331111
 	padding 3px
 	background url('@/assets/wood.jpg')
 	background-size 120% 120%
 
 	.wrap
-		background-color rgba(255,255,150,0.4)
-		border-radius 11px
+		background-color rgba(20,0,0,0.7)
+		border-radius 8px
 		box-shadow inset 0 0 3px 1px rgba(0,0,0,0.9), inset 0 0 5px 3px rgba(0,0,0,0.5)
-		border-top-left-radius 0
-		border-top-right-radius 0
 	
 	.v-row
 		padding 0
@@ -80,16 +87,17 @@ export default {
 		padding 0
 		margin 0
 		border 0
-		background-color rgba(20,0,0,0.7)
-		border-top-left-radius 10px
-		border-top-right-radius 10px
-		text-shadow 0 2px 3px black
+		background-color rgba(255, 250, 242,0.5)
+		border-radius 10px
+		text-shadow 0 -1px 1px #7d3b2c
+		margin-bottom 4px
 		
 		div
 			text-align center
-			color rgb(170,170,170)
+			color rgb(40,40,40)
 			font-weight bolder
 			padding 3px
+			font-size 1.08em
 
 	.v-col
 		padding 0

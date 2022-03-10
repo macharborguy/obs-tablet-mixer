@@ -10,7 +10,7 @@ v-app
 	v-main
 		div.d-flex.flex-row.ChannelRow
 			channel-block(v-for="device of ChannelBlocks" :device="device")
-		div.woodDivider
+		div.leatherDivider
 </template>
 
 
@@ -46,11 +46,10 @@ html, body, html body, .v-application
 	overflow-x auto
 	background-color rgba(0,0,0,0.6)
 
-.woodDivider
-	height 7px
-	background url('@/assets/wood-2.jpg')
-	background-size 100% 5000%
-	background-position 0px 10px
+.leatherDivider
+	height 20px
+	background url('@/assets/black-leather.jpg')
+	background-size 1280px 400px
 	border 1px solid rgba(0,0,0,0.7)
 	border-left 0
 	border-right 0
