@@ -147,5 +147,28 @@ export default {
 
 <style lang="stylus" scoped></style>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+
+.ChannelBlock .v-slider
+	.v-slider-track
+		background-color black
+
+	.v-slider-thumb--pressed
+		.v-slider-thumb__surface
+			border 3px solid #0080ff
+
+	.v-slider-thumb__surface
+		background #0a0809
+		background linear-gradient(to bottom, #0a0809 0%, #0a0e0a 45%, #aebcbf 45%, #aebcbf 55%, #0a0e0a 55%, #0a0809 100%)
+		width 70px
+		border-radius 8px
+
+		&:before, &:after, &::before, &::after
+			display none !important
+
+	.v-slider-thumb__ripple
+		display none !important
+
+
+</style>
 

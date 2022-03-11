@@ -100,18 +100,37 @@ const devices = [
 
 
 
-
+const SourceSwitchers = [
+	{
+		name : 'C-Band Panel Cycler',
+		bg : '#2222ff'
+	},
+	{
+		name : 'Ad Block Cycler',
+		bg : '#202020'
+	},
+	{
+		name : 'Camera Switcher',
+		bg : '#202020',
+		speed : 100
+	}
+]
 
 
 
 
 
 const state			= {
-	devices
+	devices,
+	SourceSwitchers
 }
+
 const getters		= {}
+
 const mutations		= {}
+
 const actions		= {}
+
 const modules		= {}
 
 export default createStore({ state, getters, mutations, actions, modules })
