@@ -9,7 +9,7 @@ const devices = [
 	{
 		index	: null,
 		name	: 'XLR Mic',
-		source	: '[ Mic ] M-Audio XLR - Realtek Mic-In',
+		source	: 'Behringer Main Out (For XLR Mic)',
 		ducks	: [],
 		mons	: [
 			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },

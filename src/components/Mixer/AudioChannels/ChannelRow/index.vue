@@ -7,7 +7,7 @@ div.d-flex.flex-row.ChannelRow
 <script>
 
 
-import ChannelBlock from './ChannelBlock'
+import ChannelBlock from '../ChannelBlock'
 
 export default {
 	name : 'ChannelRow',
@@ -36,6 +36,7 @@ export default {
 	overflow hidden
 	overflow-x auto
 	background-color rgba(0,0,0,0.6)
+	position relative
 
 </style>
 

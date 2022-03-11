@@ -5,9 +5,10 @@ v-btn(
 	@click="clickHandle"
 	:color="ActiveColor"
 	variant="contained"
-	:append-icon="ndi.icon"
 	:disabled='disabled'
-).mb-2 NDI
+	prepend-icon="mdi-duck"
+	:append-icon="duck.icon"
+).mb-2
 </template>
 
 <script>
@@ -16,23 +17,17 @@ import wait from '@/functions/wait'
 
 const { log } = console
 
+
 export default {
-	name : 'NDIOut_Button',
-	_tag : 'ndi-out-button',
+	name	: 'Ducking_Button',
+	_tag	: 'ducking-button',
 
-	props : ['device','ndi'],
+	props : ['device','duck'],
 
-	data : ()=>({
-		active : false,
-		disabled : true
+	data	: ()=>({
+		active		: false,
+		disabled	: true
 	}),
-
-
-
-
-
-
-
 
 	computed : {
 		ActiveColor () {
@@ -49,31 +44,33 @@ export default {
 
 		FilterName () {
 			return {
-				filterName : `To ${this.ndi.name}`
+				filterName : this.duck.filter
 			}
 		},
 	},
 
-
-
-
-
-
 	methods : {
 		...ClickSounds,
 		clickHandle () {
+			const switchTo = (!this.active)
 			const payload = {
 				...this.SourceName, ...this.FilterName,
-				filterEnabled : !this.active
+				filterEnabled : switchTo
 			};
-			this.$OBSWS.send('SetSourceFilterVisibility',payload)
+			this.$OBSWS.send('SetSourceFilterVisibility',payload).then(({status})=>{
+				if (status==='ok') this.active = switchTo
+			})
 		}
 	},
 
+	created () {
+
+	},
 
 	beforeMount () {
-		this.emitter.on('populate_initial_filter_data',filters=>{
-			const filter = filters.find(({name})=>!!(name===`To ${this.ndi.name}`))
+		this.emitter.on('populate_initial_duck_data',({filters,sourceName})=>{
+			if (sourceName!==this.device.source) return;
+			const filter = filters.find(({name})=>(name===this.duck.filter))
 			if (filter) {
 				this.active = filter.enabled
 				this.disabled = false
@@ -82,16 +79,37 @@ export default {
 
 		this.emitter.on('filter_visibility_state_change',filter=>{
 			const OfSameSource = !!(filter.sourceName===this.device.source)
-			const HasSameName = !!(filter.filterName===`To ${this.ndi.name}`)
+			const HasSameName = !!(filter.filterName===this.duck.filter)
 
 			if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 		})
 	},
+
+
+
+}
+
+
+
+export const store	= {
+	namespaced		: true,
+	state			: ()=>({}),
+	getters			: {},
+	actions			: {},
+	mutations		: {},
+	modules			: {}
 }
 </script>
 
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+</style>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+
+.DuckingGroup
+	.mdi-duck
+		opacity 0.8
+
+</style>
 

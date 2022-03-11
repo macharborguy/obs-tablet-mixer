@@ -13,7 +13,7 @@
 	.FaderBlock
 		header.headerArea
 			div {{ device.name }}
-		.wrap
+		.wrap(:class="{show}")
 			v-row
 				v-col(cols=6).pt-4
 					v-slider(
@@ -22,34 +22,52 @@
 						:thumb-size="36"
 					)
 				v-col(cols=6).py-2.pr-1.pt-4
-					audio-to-live(:device="device")
-					v-spacer.mb-2
-					monitor-out-group(:mons="device.mons" :device="device")
-					ndi-out-group(:ndiout="device.ndiout" :device="device")
-					ducking-group(:ducks="device.ducks" :device="device")
+					div.pb-2
+						audio-to-live(:device="device")
+					div.pt-2
+						monitor-out-group(:mons="device.mons" :device="device")
+						ndi-out-group(:ndiout="device.ndiout" :device="device")
+						ducking-group(:ducks="device.ducks" :device="device")
+			loc-settings-panel
+		
+	
 </template>
 
 <script>
 
+import SettingsPanel from './SettingsPanel'
 
 import AudioToLive from './Buttons/Live'
 import DuckingGroup from './Buttons/Ducking'
 import MonitorGroup from './Buttons/Monitor-Out'
 import NDIOutGroup from './Buttons/NDI-Out'
 
+import wait from '@/functions/wait'
+import { forever } from 'async'
+
+
 export default {
 	name : 'ChannelBlock',
 	_tag : 'channel-block',
 	components : {
-		[AudioToLive._tag]	: AudioToLive,
-		[DuckingGroup._tag]	: DuckingGroup,
-		[MonitorGroup._tag]	: MonitorGroup,
-		[NDIOutGroup._tag]	: NDIOutGroup
+		[AudioToLive._tag]		: AudioToLive,
+		[DuckingGroup._tag]		: DuckingGroup,
+		[MonitorGroup._tag]		: MonitorGroup,
+		[NDIOutGroup._tag]		: NDIOutGroup,
+		[SettingsPanel._tag]	: SettingsPanel,
 	},
 	props : ['device'],
-	data : ()=>({}),
+	data : ()=>({
+		show: false
+	}),
 
-	beforeMount () {}
+	methods : {
+		toggle () {
+			this.show = !this.show
+		}
+	},
+	beforeMount () {},
+	async mounted () {}
 }
 </script>
 
@@ -78,6 +96,15 @@ export default {
 		background-color rgba(20,0,0,0.7)
 		border-radius 8px
 		box-shadow inset 0 0 3px 1px rgba(0,0,0,0.9), inset 0 0 5px 3px rgba(0,0,0,0.5)
+		position relative
+
+		> .v-row
+			transform rotateY(0deg)
+			backface-visibility hidden
+			transition all 1s ease-in-out
+
+		&.show > .v-row
+			transform rotateY(-180deg)
 	
 	.v-row
 		padding 0

@@ -5,8 +5,8 @@ v-btn(
 	@click="clickHandle"
 	:color="ActiveColor"
 	variant="contained"
-	append-icon="mdi-volume-high"
-) LIVE
+	:append-icon="ButtonIcon"
+) {{ ButtonText }}
 </template>
 
 <script>
@@ -32,6 +32,16 @@ export default {
 
 
 	computed : {
+		ButtonIcon () {
+			if (this.disabled === true) return 'mdi-question-network'
+			if (this.muted === true) return 'mdi-volume-mute'
+			return 'mdi-volume-high'
+		},
+		ButtonText () {
+			if (this.disabled === true) return 'OFF'
+			if (this.muted === true) return 'MUTE'
+			return 'LIVE'
+		},
 		ActiveColor () {
 			if (this.disabled === true) return 'grey'
 			if (this.muted === true) return 'red'

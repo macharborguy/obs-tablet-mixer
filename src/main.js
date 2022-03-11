@@ -8,7 +8,11 @@ import mitt from 'mitt'
 import Vue3TouchEvents from 'vue3-touch-events'
 import OBSWS from './plugins/obsws'
 
-import ChannelRow from '@/components/Mixer/ChannelRow'
+import Toast from 'vue-toastification'
+import 'vue-toastification/dist/index.css'
+
+
+import ChannelRow from '@/components/Mixer/AudioChannels/ChannelRow'
 
 
 
@@ -22,6 +26,7 @@ const Application = createApp(App)
 	.use(router)
 	.use(store)
 	.use(vuetify)
+	.use(Toast,{})
 	.use(Vue3TouchEvents)
 
 

@@ -5,10 +5,9 @@ v-btn(
 	@click="clickHandle"
 	:color="ActiveColor"
 	variant="contained"
+	:append-icon="mon.icon"
 	:disabled='disabled'
-	prepend-icon="mdi-duck"
-	:append-icon="duck.icon"
-).mb-2
+).mb-2 TO
 </template>
 
 <script>
@@ -17,17 +16,23 @@ import wait from '@/functions/wait'
 
 const { log } = console
 
-
 export default {
-	name	: 'Ducking_Button',
-	_tag	: 'ducking-button',
+	name : 'MonitorOut_Button',
+	_tag : 'monitor-out-button',
 
-	props : ['device','duck'],
+	props : ['device','mon'],
 
-	data	: ()=>({
+	data : ()=>({
 		active : false,
 		disabled : true
 	}),
+
+
+
+
+
+
+
 
 	computed : {
 		ActiveColor () {
@@ -44,10 +49,15 @@ export default {
 
 		FilterName () {
 			return {
-				filterName : this.duck.filter
+				filterName : `To ${this.mon.name}`
 			}
 		},
 	},
+
+
+
+
+
 
 	methods : {
 		...ClickSounds,
@@ -60,13 +70,11 @@ export default {
 		}
 	},
 
-	created () {
-
-	},
 
 	beforeMount () {
-		this.emitter.on('populate_initial_filter_data',filters=>{
-			const filter = filters.find(({name})=>!!(name===this.duck.filter))
+		this.emitter.on('populate_initial_monitor_data',({filters,sourceName})=>{
+			if (sourceName!==this.device.source) return;
+			const filter = filters.find(({name})=>!!(name===`To ${this.mon.name}`))
 			if (filter) {
 				this.active = filter.enabled
 				this.disabled = false
@@ -75,35 +83,16 @@ export default {
 
 		this.emitter.on('filter_visibility_state_change',filter=>{
 			const OfSameSource = !!(filter.sourceName===this.device.source)
-			const HasSameName = !!(filter.filterName===this.duck.filter)
+			const HasSameName = !!(filter.filterName===`To ${this.mon.name}`)
 
 			if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 		})
-	}
-
-}
-
-
-
-export const store	= {
-	namespaced		: true,
-	state			: ()=>({}),
-	getters			: {},
-	actions			: {},
-	mutations		: {},
-	modules			: {}
+	},
 }
 </script>
 
 
-<style lang="stylus" scoped>
-</style>
+<style lang="stylus" scoped></style>
 
-<style lang="stylus">
-
-.DuckingGroup
-	.mdi-duck
-		opacity 0.8
-
-</style>
+<style lang="stylus"></style>
 

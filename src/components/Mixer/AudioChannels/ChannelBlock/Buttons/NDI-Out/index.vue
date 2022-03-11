@@ -35,7 +35,7 @@ export default {
 		this.$OBSWS.send('GetSourceFilters',{
 			...this.SourceName
 		}).then(({filters})=>{
-			this.emitter.emit('populate_initial_filter_data', filters)
+			this.emitter.emit('populate_initial_ndi_data', {filters,sourceName:this.device.source})
 		})
 
 		this.$OBSWS.on('SourceFilterVisibilityChanged',(filter)=>{
@@ -48,9 +48,11 @@ export default {
 
 
 <style lang="stylus" scoped>
+
 .NDIOutGroup
 	background-color rgba(30,0,0,0.7)
-	border 1px solid rgba(0,0,0,0.3)
+	border 1px solid alpha(yellow,0.5)
+	box-shadow 0px 1px 0 2px alpha(black,0.75), 0px -1px 0 1px alpha(white,0.25)
 	margin 0 5px 5px
 	padding 10px 0 0 0
 	border-radius 8px

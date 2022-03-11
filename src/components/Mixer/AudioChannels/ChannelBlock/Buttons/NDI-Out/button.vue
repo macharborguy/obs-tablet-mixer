@@ -5,9 +5,9 @@ v-btn(
 	@click="clickHandle"
 	:color="ActiveColor"
 	variant="contained"
-	:append-icon="mon.icon"
+	:append-icon="ndi.icon"
 	:disabled='disabled'
-).mb-2 TO
+).mb-2 NDI
 </template>
 
 <script>
@@ -17,10 +17,10 @@ import wait from '@/functions/wait'
 const { log } = console
 
 export default {
-	name : 'MonitorOut_Button',
-	_tag : 'monitor-out-button',
+	name : 'NDIOut_Button',
+	_tag : 'ndi-out-button',
 
-	props : ['device','mon'],
+	props : ['device','ndi'],
 
 	data : ()=>({
 		active : false,
@@ -49,7 +49,7 @@ export default {
 
 		FilterName () {
 			return {
-				filterName : `To ${this.mon.name}`
+				filterName : `To ${this.ndi.name}`
 			}
 		},
 	},
@@ -72,8 +72,9 @@ export default {
 
 
 	beforeMount () {
-		this.emitter.on('populate_initial_filter_data',filters=>{
-			const filter = filters.find(({name})=>!!(name===`To ${this.mon.name}`))
+		this.emitter.on('populate_initial_ndi_data',({filters,sourceName})=>{
+			if (sourceName!==this.device.source) return;
+			const filter = filters.find(({name})=>!!(name===`To ${this.ndi.name}`))
 			if (filter) {
 				this.active = filter.enabled
 				this.disabled = false
@@ -82,7 +83,7 @@ export default {
 
 		this.emitter.on('filter_visibility_state_change',filter=>{
 			const OfSameSource = !!(filter.sourceName===this.device.source)
-			const HasSameName = !!(filter.filterName===`To ${this.mon.name}`)
+			const HasSameName = !!(filter.filterName===`To ${this.ndi.name}`)
 
 			if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 		})

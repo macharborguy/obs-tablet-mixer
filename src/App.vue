@@ -53,6 +53,9 @@ html, body, html body, .v-application
 
 <script>
 const { log } = console
+import wait from '@/functions/wait'
+import { useToast } from "vue-toastification"
+
 
 const Application = {
 	name: 'App',
@@ -62,6 +65,13 @@ const Application = {
 	
 	props : [],
 	mixins : [],
+
+	setup () {
+		const toast = useToast()
+		
+		return { toast }
+	},
+
 }
 
 
@@ -70,7 +80,7 @@ const Application = {
 	'beforeCreate',
 	'created',
 	'beforeMount',
-	'mounted',
+	// 'mounted',
 	'beforeUpdate',
 	'updated',
 	'beforeUnmount',
