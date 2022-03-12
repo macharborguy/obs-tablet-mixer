@@ -16,11 +16,7 @@
 		.wrap(:class="{show}")
 			v-row
 				v-col(cols=6).pt-4
-					v-slider(
-						direction="vertical"
-						label="Mic"
-						:thumb-size="36"
-					)
+					loc-channel-slider(:device="device")
 				v-col(cols=6).py-2.pr-1.pt-4
 					div.pb-2
 						audio-to-live(:device="device")
@@ -42,6 +38,9 @@ import DuckingGroup from './Buttons/Ducking'
 import MonitorGroup from './Buttons/Monitor-Out'
 import NDIOutGroup from './Buttons/NDI-Out'
 
+
+import ChannelSlider from './Slider'
+
 import wait from '@/functions/wait'
 import { forever } from 'async'
 
@@ -55,6 +54,7 @@ export default {
 		[MonitorGroup._tag]		: MonitorGroup,
 		[NDIOutGroup._tag]		: NDIOutGroup,
 		[SettingsPanel._tag]	: SettingsPanel,
+		[ChannelSlider._tag]	: ChannelSlider,
 	},
 	props : ['device'],
 	data : ()=>({
@@ -147,28 +147,5 @@ export default {
 
 <style lang="stylus" scoped></style>
 
-<style lang="stylus">
-
-.ChannelBlock .v-slider
-	.v-slider-track
-		background-color black
-
-	.v-slider-thumb--pressed
-		.v-slider-thumb__surface
-			border 3px solid #0080ff
-
-	.v-slider-thumb__surface
-		background #0a0809
-		background linear-gradient(to bottom, #0a0809 0%, #0a0e0a 45%, #aebcbf 45%, #aebcbf 55%, #0a0e0a 55%, #0a0809 100%)
-		width 70px
-		border-radius 8px
-
-		&:before, &:after, &::before, &::after
-			display none !important
-
-	.v-slider-thumb__ripple
-		display none !important
-
-
-</style>
+<style lang="stylus"></style>
 

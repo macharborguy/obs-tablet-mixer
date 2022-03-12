@@ -61,7 +61,7 @@ div.SwitcherBlock
 	margin 0
 	margin-right 10px
 	border-radius 8px
-	background-color rgba(200,200,200,0.3)
+	background-color rgba(50,50,50,0.3)
 	border 1px solid rgba(200,200,200,0.38)
 
 	h4
