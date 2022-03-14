@@ -36,11 +36,22 @@ const devices = [
 	},
 	{
 		index	: null,
+		name	: 'Discord',
+		source	: '[ App Audio ] Discord',	// Rename later to "Music Player"
+		ducks	: [],
+		mons	: [
+			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
+		],
+		ndiout	: []
+	},
+	{
+		index	: null,
 		name	: 'Gaming PC NDI-In',
-		source	: '[ NDI ] Gaming PC Main Output',
+		source	: 'Game AUdio NDI',
 		ducks	: [
 			{ name : 'Old Alerts', icon: 'mdi-bullhorn', filter: 'Alert Ducker 1 - Legacy Alerts' },
 			{ name : 'SoundAlerts', icon: 'mdi-volume-high', filter: 'Alert Ducker 2 - SoundAlerts' },
+			{ name : 'Microphone', icon: 'mdi-microphone', filter: 'Mic Ducker' },
 		],
 		mons	: [
 			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
@@ -66,6 +77,7 @@ const devices = [
 		ducks	: [],
 		mons	: [
 			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
+			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
 		],
 		ndiout	: []
 	},
