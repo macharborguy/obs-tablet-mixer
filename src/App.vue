@@ -73,6 +73,11 @@ const Application = {
 		return { toast }
 	},
 
+
+	mounted () {
+		this.$OBSWS.on('BroadcastCustomMessage',({realm,data})=>{})
+	},
+
 }
 
 
