@@ -1,12 +1,7 @@
 
 <template lang="pug">
 v-app
-	//- v-system-bar(app dark color="red lighten-2")
-	//- 	v-spacer
-	//- 	v-icon mdi-wifi-strength-4
-	//- 	v-icon mdi-signal-cellular-outline
-	//- 	v-icon mdi-battery
-	//- 	span 12:30
+	loc-system-bar
 	v-main
 		channel-row
 		div.leatherDivider
@@ -28,12 +23,6 @@ html, body, html body, .v-application
 	margin 0
 	padding 0
 
-.v-system-bar
-	background-color black
-	color rgb(125,125,125)
-
-	.mdi.v-icon
-		color rgb(125,125,125)
 
 </style>
 
@@ -71,11 +60,6 @@ const Application = {
 		const toast = useToast()
 		
 		return { toast }
-	},
-
-
-	mounted () {
-		this.$OBSWS.on('BroadcastCustomMessage',({realm,data})=>{})
 	},
 
 }
