@@ -4,7 +4,7 @@
 import OBSWS from 'obs-websocket-js'
 import EventEmitter from 'eventemitter2'
 
-const ConnectionSettings = { address: 'ryzen7:4444' }
+const ConnectionSettings = { address: '192.168.1.24:4444' }
 
 const { log, error, warn } = console
 
