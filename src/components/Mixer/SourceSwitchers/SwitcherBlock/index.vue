@@ -85,8 +85,8 @@ div.SwitcherBlock
 			display block
 			background-color black
 			box-sizing border-box
-			width 320px
-			height 180px
+			width 284px
+			height 160px
 	
 	&:last-child
 		margin-right 0
