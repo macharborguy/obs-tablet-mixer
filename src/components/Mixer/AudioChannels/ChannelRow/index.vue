@@ -20,7 +20,7 @@ export default {
 
 	computed : {
 		ChannelBlocks () {
-			return [...this.$store.state.devices]
+			return [...this.$store.state.new_devices]
 		}
 	},
 	methods : {},
@@ -37,6 +37,9 @@ export default {
 	overflow-x auto
 	background-color rgba(0,0,0,0.6)
 	position relative
+	align-items stretch
+	display flex
+	flex-direction row 
 
 </style>
 

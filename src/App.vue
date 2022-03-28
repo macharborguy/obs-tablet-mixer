@@ -6,6 +6,7 @@ v-app
 		channel-row
 		div.leatherDivider
 		loc-source-switcher
+		div.leatherDivider
 </template>
 
 
