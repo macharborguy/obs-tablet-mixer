@@ -39,7 +39,7 @@ export default {
 	},
 	data : ()=>({
 		src : null,
-		speed : 1000,
+		speed : 100,
 	}),
 
 	computed : {

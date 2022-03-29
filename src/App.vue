@@ -63,6 +63,15 @@ const Application = {
 		return { toast }
 	},
 
+
+
+	async mounted () {
+		while (!this.$OBSWS._connected) await wait(50)
+
+		//this.$OBSWS.on('SourceVolumeChanged', ({volume,volumeDb})=>log([(volume*100).toFixed(3),`${volumeDb.toFixed(3)} Db`]))
+	}
+
+
 }
 
 

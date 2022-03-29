@@ -5,8 +5,8 @@ v-slider.ChannelSlider(
 	direction="vertical"
 	label="Mic"
 	:thumb-size="36"
-	min="-51"
-	max="0"
+	min="0"
+	max="1"
 	v-model="volume"
 )
 </template>
@@ -24,11 +24,10 @@ import { throttle } from 'underscore'
 
 
 const SetVolume = throttle((obs,source,pos)=>{
-	if (pos<-50) pos=-100
 	obs.send('SetVolume',{
 		source,
 		volume : pos,
-		useDecibel : true
+		useDecibel : false
 	})
 },100)
 

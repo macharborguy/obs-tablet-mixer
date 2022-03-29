@@ -199,11 +199,13 @@ const devices = [
 const SourceSwitchers = [
 	{
 		name : 'C-Band Panel Cycler',
-		bg : '#2222ff'
+		bg : '#2222ff',
+		speed : 100
 	},
 	{
 		name : 'Ad Block Cycler',
-		bg : '#202020'
+		bg : '#202020',
+		speed : 100
 	},
 	{
 		name : 'Camera Switcher',
@@ -211,6 +213,19 @@ const SourceSwitchers = [
 		speed : 100
 	}
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
