@@ -46,6 +46,7 @@ html, body, html body, .v-application
 const { log } = console
 import wait from '@/functions/wait'
 import { useToast } from "vue-toastification"
+import { forever } from 'async'
 
 
 const Application = {
@@ -67,6 +68,11 @@ const Application = {
 
 	async mounted () {
 		while (!this.$OBSWS._connected) await wait(50)
+
+		// await forever(async()=>{
+		// 	this.toast.info("YAY")
+		// 	await wait(2000)
+		// })
 
 		//this.$OBSWS.on('SourceVolumeChanged', ({volume,volumeDb})=>log([(volume*100).toFixed(3),`${volumeDb.toFixed(3)} Db`]))
 	}
