@@ -16,13 +16,14 @@ import ChannelRow from '@/components/Mixer/AudioChannels/ChannelRow'
 import SourceSwitchers from '@/components/Mixer/SourceSwitchers'
 import SystemBar from '@/components/SystemBar'
 
-
+import { SocketIO, SocketIOLegacy } from '@/plugins/socket-io'
 
 loadFonts()
 
 const emitter = mitt()
 
 const Application = createApp(App)
+	.use(SocketIOLegacy())
 	.use(OBSWS)
 	.use(router)
 	.use(store)
