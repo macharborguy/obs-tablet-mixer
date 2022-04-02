@@ -13,7 +13,7 @@ v-slider.ChannelSlider(
 
 <script>
 import wait from '@/functions/wait'
-const { log } = console
+const { log, error, warn } = console
 import { forever } from 'async'
 import { throttle } from 'underscore'
 

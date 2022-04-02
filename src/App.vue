@@ -43,7 +43,7 @@ html, body, html body, .v-application
 
 
 <script>
-const { log } = console
+const { log, error, warn } = console
 import wait from '@/functions/wait'
 import { useToast } from "vue-toastification"
 import { forever } from 'async'
