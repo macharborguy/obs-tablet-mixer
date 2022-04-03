@@ -49,7 +49,7 @@ export default {
 
 		FilterName () {
 			return {
-				filterName : `To ${this.mon.name}`
+				filterName : this.mon.name
 			}
 		},
 	},
@@ -74,7 +74,7 @@ export default {
 	beforeMount () {
 		this.emitter.on('populate_initial_monitor_data',({filters,sourceName})=>{
 			if (sourceName!==this.device.source) return;
-			const filter = filters.find(({name})=>!!(name===`To ${this.mon.name}`))
+			const filter = filters.find(({name})=>!!(name===this.mon.name))
 			if (filter) {
 				this.active = filter.enabled
 				this.disabled = false
@@ -83,7 +83,7 @@ export default {
 
 		this.emitter.on('filter_visibility_state_change',filter=>{
 			const OfSameSource = !!(filter.sourceName===this.device.source)
-			const HasSameName = !!(filter.filterName===`To ${this.mon.name}`)
+			const HasSameName = !!(filter.filterName===this.mon.name)
 
 			if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 		})

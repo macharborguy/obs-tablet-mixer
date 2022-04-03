@@ -20,7 +20,7 @@ export default {
 
 	computed : {
 		ChannelBlocks () {
-			return [...this.$store.state.new_devices]
+			return [...this.$store.state.devices]
 		}
 	},
 	methods : {},

@@ -49,7 +49,7 @@ export default {
 
 		FilterName () {
 			return {
-				filterName : `To ${this.ndi.name}`
+				filterName : this.ndi.name
 			}
 		},
 	},
@@ -74,7 +74,7 @@ export default {
 	beforeMount () {
 		this.emitter.on('populate_initial_ndi_data',({filters,sourceName})=>{
 			if (sourceName!==this.device.source) return;
-			const filter = filters.find(({name})=>!!(name===`To ${this.ndi.name}`))
+			const filter = filters.find(({name})=>!!(name===this.ndi.name))
 			if (filter) {
 				this.active = filter.enabled
 				this.disabled = false
@@ -83,7 +83,7 @@ export default {
 
 		this.emitter.on('filter_visibility_state_change',filter=>{
 			const OfSameSource = !!(filter.sourceName===this.device.source)
-			const HasSameName = !!(filter.filterName===`To ${this.ndi.name}`)
+			const HasSameName = !!(filter.filterName===this.ndi.name)
 
 			if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 		})

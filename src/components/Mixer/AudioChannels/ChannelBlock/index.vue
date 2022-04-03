@@ -13,6 +13,13 @@
 	.FaderBlock
 		header.headerArea
 			div {{ device.name }}
+
+		
+		div.new-wrap
+			InputSlider(vertical='vertical')
+			InputSlider(vertical='vertical')
+			InputSlider(vertical='vertical')
+
 		.wrap(:class="{show}")
 			v-row
 				v-col(cols=6).pt-4
@@ -31,18 +38,22 @@
 
 <script>
 
-import SettingsPanel from './SettingsPanel'
+import LargeBlock		from './Blocks/Large'
+import SmallBlock		from './Blocks/Small'
+import InputSlider		from './Slider/InputSlider'
 
-import AudioToLive from './Buttons/Live'
-import DuckingGroup from './Buttons/Ducking'
-import MonitorGroup from './Buttons/Monitor-Out'
-import NDIOutGroup from './Buttons/NDI-Out'
+import SettingsPanel	from './SettingsPanel'
+
+import AudioToLive		from './Buttons/Live'
+import DuckingGroup		from './Buttons/Ducking'
+import MonitorGroup		from './Buttons/Monitor-Out'
+import NDIOutGroup		from './Buttons/NDI-Out'
 
 
-import ChannelSlider from './Slider'
+import ChannelSlider	from './Slider'
 
-import wait from '@/functions/wait'
-import { forever } from 'async'
+import wait				from '@/functions/wait'
+import { forever }		from 'async'
 
 
 export default {
@@ -55,6 +66,9 @@ export default {
 		[NDIOutGroup._tag]		: NDIOutGroup,
 		[SettingsPanel._tag]	: SettingsPanel,
 		[ChannelSlider._tag]	: ChannelSlider,
+		LargeBlock,
+		SmallBlock,
+		InputSlider
 	},
 	props : ['device'],
 	data : ()=>({
@@ -139,6 +153,23 @@ export default {
 	
 	.v-slider .v-slider-thumb__surface
 		width 100px !important
+
+
+div.new-wrap
+	display none
+
+.FaderBlock.Tester
+	width auto !important
+	div.new-wrap
+		display flex
+		padding 0
+		margin 0
+		box-sizing border-box
+		margin-bottom 25px
+
+
+
+
 
 </style>
 

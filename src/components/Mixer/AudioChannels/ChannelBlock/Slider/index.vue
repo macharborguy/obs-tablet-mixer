@@ -51,6 +51,7 @@ export default {
 	beforeMount () {},
 	async mounted () {
 		while (!this.$OBSWS._connected) await wait(50)
+
 		this.$OBSWS.send('GetVolume',{
 			source : this.device.source,
 			useDecibel : true

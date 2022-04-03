@@ -3,12 +3,12 @@ import { createStore } from 'vuex'
 
 
 const monitors = {
-	headphones	: ()=>({ slug: 'headphones', name: 'Headphones', icon: 'mdi-headphones'}),
-	voip		: ()=>({ slug: 'voip', name: 'VoIP', icon: 'mdi-phone-voip' })
+	headphones	: ()=>({ slug: 'headphones', name: 'To Headphones', icon: 'mdi-headphones'}),
+	voip		: ()=>({ slug: 'voip', name: 'To VoIP', icon: 'mdi-phone-voip' })
 }
 
 const ndiout = {
-	'gaming-pc-voip'	: ()=>({ slug: 'gaming-pc-voip', name: 'Gaming PC VoIP', icon: 'mdi-gamepad-square' })
+	'gaming-pc-voip'	: ()=>({ slug: 'gaming-pc-voip', name: 'To Gaming PC VoIP', icon: 'mdi-gamepad-square' })
 }
 
 const ducks = {
@@ -19,7 +19,7 @@ const ducks = {
 }
 
 
-const new_devices = [
+const devices = [
 	
 	{
 		index	: null,
@@ -89,112 +89,6 @@ const new_devices = [
 ]
 
 
-const devices = [
-	{
-		index	: null,
-		name	: 'XLR Mic',
-		source	: 'Behringer Main Out (For XLR Mic)',
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
-		],
-		ndiout	: [
-			{ name: 'Gaming PC VoIP', icon: 'mdi-gamepad-square' },
-		]
-	},
-	{
-		index	: null,
-		name	: 'Music Player',
-		source	: 'Pretzel Rocks Mirror',	// Rename later to "Music Player"
-		ducks	: [
-			{ name : 'Old Alerts', icon: 'mdi-bullhorn', filter: 'Alert Ducker 1 - Legacy Alerts' },
-			{ name : 'SoundAlerts', icon: 'mdi-volume-high', filter: 'Alert Ducker 2 - SoundAlerts' },
-			{ name : 'Microphone', icon: 'mdi-microphone', filter: 'Mic Ducker' },
-		],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
-		],
-		ndiout	: []
-	},
-	{
-		index	: null,
-		name	: 'Discord',
-		source	: '[ App Audio ] Discord',	// Rename later to "Music Player"
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-		],
-		ndiout	: []
-	},
-	{
-		index	: null,
-		name	: 'Gaming PC NDI-In',
-		source	: 'Game AUdio NDI',
-		ducks	: [
-			{ name : 'Old Alerts', icon: 'mdi-bullhorn', filter: 'Alert Ducker 1 - Legacy Alerts' },
-			{ name : 'SoundAlerts', icon: 'mdi-volume-high', filter: 'Alert Ducker 2 - SoundAlerts' },
-			{ name : 'Microphone', icon: 'mdi-microphone', filter: 'Mic Ducker' },
-		],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
-		],
-		ndiout	: []
-	},
-	{
-		index	: null,
-		name	: 'Elgato HD60',
-		source	: '[ Elgato ] GameCapture HD60',
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
-		],
-		ndiout	: []
-	},
-	{
-		index	: null,
-		name	: '👁️ ORBY',
-		source	: '[ Widget ] Orby',
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-			{ name: 'VoIP', icon: 'mdi-phone-voip', volume : 100 },
-		],
-		ndiout	: []
-	},
-
-
-
-	
-	{
-		index	: null,
-		name	: 'SoundAlerts',
-		source	: '[ Widget ] SoundAlerts',
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-		],
-		ndiout	: []
-	},
-	{
-		index	: null,
-		name	: 'Old Alerts',
-		source	: '[ Widget ] Legacy Alert Widget',
-		ducks	: [],
-		mons	: [
-			{ name: 'Headphones', icon: 'mdi-headphones', volume : 100 },
-		],
-		ndiout	: []
-	},
-]
-
-
-
-
-
 
 const SourceSwitchers = [
 	{
@@ -232,7 +126,7 @@ const SourceSwitchers = [
 
 
 const state			= {
-	new_devices : new_devices.map(device=>({
+	devices : devices.map(device=>({
 		...device,
 		mons: device.mons.map(mon=>({
 			...monitors[mon](),
@@ -247,7 +141,6 @@ const state			= {
 			volume : 100
 		}))
 	})),
-	devices,
 	SourceSwitchers
 }
 
