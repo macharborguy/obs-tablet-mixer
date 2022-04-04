@@ -1,6 +1,6 @@
 <template lang="pug">
 div.loc-input-slider--wrap(:class="useVertical")
-	input(type="range" min="" max="" value="" ).loc-input-slider
+	input(type="range" :min="min" :max="max" :value="value" ).loc-input-slider
 </template>
 
 <script>
@@ -8,7 +8,7 @@ div.loc-input-slider--wrap(:class="useVertical")
 	export default {
 		name : 'InputSlider',
 		data : ()=>({}),
-		props : ['vertical'],
+		props : ['vertical','min','max','value'],
 		computed : {
 			useVertical () {
 				return { vertical : this.vertical }
@@ -22,7 +22,6 @@ div.loc-input-slider--wrap(:class="useVertical")
 .loc-input-slider--wrap
 
 	border-radius 10px
-	background-color rgba(0,0,0,0.2)
 	width auto
 	height 100%
 	padding-bottom 10px
