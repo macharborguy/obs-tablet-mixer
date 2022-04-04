@@ -31,15 +31,18 @@ export default {
 
 <style lang="stylus" scoped>
 
+$background-color = #FDF6EC
+
 .ChannelRow
 	width 100%
 	overflow hidden
 	overflow-x auto
-	background-color rgba(0,0,0,0.6)
+	background-color $background-color
 	position relative
 	align-items stretch
 	display flex
-	flex-direction row 
+	flex-direction row
+	height 420px
 
 </style>
 

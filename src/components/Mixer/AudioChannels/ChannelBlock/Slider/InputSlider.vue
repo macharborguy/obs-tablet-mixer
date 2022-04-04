@@ -1,18 +1,53 @@
+
+
+
+
 <template lang="pug">
 div.loc-input-slider--wrap(:class="useVertical")
-	input(type="range" :min="min" :max="max" :value="value" ).loc-input-slider
+	header
+		template(v-if="mon && mon.icon")
+			| TO 
+			v-icon(size="sm") {{ mon.icon }}
+		template(v-else-if="ndi && ndi.icon")
+			| TO 
+			v-icon(size="sm") {{ ndi.icon }}
+		template(v-else-if="duck && duck.icon")
+			v-icon(size="sm") mdi-duck
+			v-icon(size="sm") {{ duck.icon }}
+		template(v-else)
+			| MAIN
+	
+	input(type="range" :min="min" :max="max" :value="value").loc-input-slider
 </template>
 
+
+
+
+
+
 <script>
+
+	import wait				from '@/functions/wait'
+	import { forever }		from 'async'
+
+
+	const { log, error, warn } = console
+
+
 
 	export default {
 		name : 'InputSlider',
 		data : ()=>({}),
-		props : ['vertical','min','max','value'],
+		props : ['vertical','min','max','duck','value', 'device', 'mon', 'ndi'],
 		computed : {
 			useVertical () {
 				return { vertical : this.vertical }
 			}
+		},
+
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+			log(this.device, this.mon)
 		}
 	}
 </script>
@@ -20,18 +55,11 @@ div.loc-input-slider--wrap(:class="useVertical")
 
 <style lang="stylus" scoped>
 .loc-input-slider--wrap
-
-	border-radius 10px
-	width auto
-	height 100%
-	padding-bottom 10px
-
 	&.vertical
 		.loc-input-slider
-			margin-top 16px
 			-webkit-appearance slider-vertical
-			width 60px
-			height 100%
+			width 80px
+			height calc(100% - 50px)
 
 .loc-input-slider
 	margin 0

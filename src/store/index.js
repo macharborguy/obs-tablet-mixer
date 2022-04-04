@@ -22,69 +22,69 @@ const ducks = {
 const devices = [
 	
 	{
-		index	: null,
-		name	: 'XLR Mic',
-		source	: 'Behringer Main Out (For XLR Mic)',
-		ducks	: [],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: [ 'gaming-pc-voip' ]
+		index		: null,
+		name		: 'XLR Mic',
+		source		: 'Behringer Main Out (For XLR Mic)',
+		ducks		: [],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: [ 'gaming-pc-voip' ]
 	},
 	{
-		index	: null,
-		name	: 'Music Player',
-		source	: 'Pretzel Rocks Mirror',	// Rename later to "Music Player"
-		ducks	: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord' ],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: 'Music Player',
+		source		: 'Pretzel Rocks Mirror',	// Rename later to "Music Player"
+		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord' ],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 	{
-		index	: null,
-		name	: 'Discord',
-		source	: '[ App Audio ] Discord',	// Rename later to "Music Player"
-		ducks	: [],
-		mons	: [ 'headphones' ],
-		ndiout	: []
+		index		: null,
+		name		: 'Discord',
+		source		: '[ App Audio ] Discord',	// Rename later to "Music Player"
+		ducks		: [],
+		mons		: [ 'headphones' ],
+		ndiout		: []
 	},
 	{
-		index	: null,
-		name	: 'Gaming PC NDI-In',
-		source	: 'Game AUdio NDI',
-		ducks	: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: 'Gaming PC NDI-In',
+		source		: 'Game AUdio NDI',
+		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 	{
-		index	: null,
-		name	: 'Elgato HD60',
-		source	: '[ Elgato ] GameCapture HD60',
-		ducks	: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: 'Elgato HD60',
+		source		: '[ Elgato ] GameCapture HD60',
+		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 	{
-		index	: null,
-		name	: '👁️ ORBY',
-		source	: '[ Widget ] Orby',
-		ducks	: [],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: '👁️ ORBY',
+		source		: '[ Widget ] Orby',
+		ducks		: [],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 
 	{
-		index	: null,
-		name	: 'SoundAlerts',
-		source	: '[ Widget ] SoundAlerts',
-		ducks	: [],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: 'SoundAlerts',
+		source		: '[ Widget ] SoundAlerts',
+		ducks		: [],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 	{
-		index	: null,
-		name	: 'Old Alerts',
-		source	: '[ Widget ] Legacy Alert Widget',
-		ducks	: [],
-		mons	: [ 'headphones', 'voip' ],
-		ndiout	: []
+		index		: null,
+		name		: 'Old Alerts',
+		source		: '[ Widget ] Legacy Alert Widget',
+		ducks		: [],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
 	},
 ]
 
@@ -93,16 +93,22 @@ const devices = [
 const SourceSwitchers = [
 	{
 		name : 'C-Band Panel Cycler',
+		slug : 'c-band-panel-cycler',
+		short_name : 'CB Cycle',
 		bg : '#2222ff',
 		speed : 100
 	},
 	{
 		name : 'Ad Block Cycler',
+		slug : 'ad-block-cycler',
+		short_name : 'Ad Cycle',
 		bg : '#202020',
 		speed : 100
 	},
 	{
 		name : 'Camera Switcher',
+		slug : 'camera-switcher',
+		short_name : 'CamSwitch',
 		bg : '#202020',
 		speed : 100
 	}
