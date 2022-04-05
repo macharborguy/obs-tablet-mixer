@@ -12,7 +12,7 @@ import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
 
-import ChannelRow from '@/components/Mixer/AudioChannels/ChannelRow'
+import AudioMixer from '@/components/AudioMixer'
 import SourceSwitchers from '@/components/Mixer/SourceSwitchers'
 import SystemBar from '@/components/SystemBar'
 
@@ -32,7 +32,7 @@ const Application = createApp(App)
 	.use(Vue3TouchEvents)
 
 
-;[ChannelRow,SourceSwitchers,SystemBar].forEach(comp=>Application.component(comp._tag, comp))
+;[AudioMixer,SourceSwitchers,SystemBar].forEach(comp=>Application.component(comp._tag, comp))
 
 
 Application.config.globalProperties.emitter = emitter

@@ -3,9 +3,9 @@
 v-app
 	loc-system-bar
 	v-main
-		channel-row
+		audio-mixer
 		div.leatherDivider
-		loc-source-switcher
+		//- loc-source-switcher
 		div.leatherDivider
 </template>
 

@@ -31,7 +31,7 @@ export default {
 
 <style lang="stylus" scoped>
 
-$background-color = #FDF6EC
+$background-color = desaturate(darken(#FDF6EC,10%),25%)
 
 .ChannelRow
 	width 100%
@@ -42,7 +42,6 @@ $background-color = #FDF6EC
 	align-items stretch
 	display flex
 	flex-direction row
-	height 420px
 
 </style>
 

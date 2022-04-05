@@ -3,7 +3,7 @@
 
 
 <template lang="pug">
-div.loc-input-slider--wrap(:class="useVertical")
+div.loc-input-slider--wrap(:class="useVertical" )
 	header
 		template(v-if="mon && mon.icon")
 			| TO 
@@ -17,7 +17,9 @@ div.loc-input-slider--wrap(:class="useVertical")
 		template(v-else)
 			| MAIN
 	
-	input(type="range" :min="min" :max="max" :value="value").loc-input-slider
+	input(type="range" :min="min" :step="step" :max="max" :value="value").loc-input-slider
+
+	slot
 </template>
 
 
@@ -38,10 +40,13 @@ div.loc-input-slider--wrap(:class="useVertical")
 	export default {
 		name : 'InputSlider',
 		data : ()=>({}),
-		props : ['vertical','min','max','duck','value', 'device', 'mon', 'ndi'],
+		props : ['vertical','min','max','step', 'height', 'duck','value', 'device', 'mon', 'ndi'],
 		computed : {
 			useVertical () {
 				return { vertical : this.vertical }
+			},
+			useHeight () {
+				return { height : `${this.height}px` }
 			}
 		},
 
@@ -59,7 +64,6 @@ div.loc-input-slider--wrap(:class="useVertical")
 		.loc-input-slider
 			-webkit-appearance slider-vertical
 			width 80px
-			height calc(100% - 50px)
 
 .loc-input-slider
 	margin 0
