@@ -7,7 +7,9 @@
 
 
 <template lang="pug">
-div.LOC_Buttons_Group
+div.LOC_NDI_Button
+	led-button
+		slot
 </template>
 
 
@@ -20,10 +22,18 @@ div.LOC_Buttons_Group
 
 <script>
 
+	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+
 	export default {
-		name : 'ButtonsGroup',
-		_tag : 'buttons-group',
+		name : 'NDIButton',
+		_tag : 'ndi-button',
+
+		components : {
+			[LEDButton._tag] : LEDButton
+		},
+
 		data : ()=>({}),
+		
 		computed : {},
 		methods : {},
 		props : [],
@@ -41,12 +51,7 @@ div.LOC_Buttons_Group
 
 
 
-<style lang="stylus" scoped>
-
-.LOC_Buttons_Group
-	// color black
-
-</style>
+<style lang="stylus" scoped></style>
 
 
 

@@ -7,7 +7,9 @@
 
 
 <template lang="pug">
-div
+div.LOC_Duck_Button
+	led-button()
+		slot
 </template>
 
 
@@ -20,10 +22,18 @@ div
 
 <script>
 
+	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+
 	export default {
-		name : 'ButtonsBlock',
-		_tag : 'buttons-block',
+		name : 'DuckButton',
+		_tag : 'duck-button',
+
+		components : {
+			[LEDButton._tag] : LEDButton
+		},
+
 		data : ()=>({}),
+		
 		computed : {},
 		methods : {},
 		props : [],

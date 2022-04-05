@@ -7,8 +7,9 @@
 
 
 <template lang="pug">
-div
-	channel-row
+div.LOC_Monitor_Button
+	led-button
+		slot
 </template>
 
 
@@ -20,15 +21,19 @@ div
 
 
 <script>
-	import ChannelRow from './Channels/ChannelRow'
+
+	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
 
 	export default {
-		name : 'AudioMixer',
-		_tag : 'audio-mixer',
+		name : 'MonitorButton',
+		_tag : 'monitor-button',
+
 		components : {
-			[ChannelRow._tag] : ChannelRow
+			[LEDButton._tag] : LEDButton
 		},
+
 		data : ()=>({}),
+		
 		computed : {},
 		methods : {},
 		props : [],

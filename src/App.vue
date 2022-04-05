@@ -25,6 +25,10 @@ html, body, html body, .v-application
 	padding 0
 
 
+*
+	// outline 1px dotted rgba(black,45%)
+
+
 </style>
 
 

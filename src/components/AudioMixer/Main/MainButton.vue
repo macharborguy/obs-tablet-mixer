@@ -5,9 +5,12 @@
 
 
 
+
 <template lang="pug">
-div
+div.LOC_Main_Button
+	led-button()
 </template>
+
 
 
 
@@ -18,10 +21,18 @@ div
 
 <script>
 
+	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+
 	export default {
-		name : 'LEDButton',
-		_tag : 'led-button',
+		name : 'MainButton',
+		_tag : 'main-button',
+
+		components : {
+			[LEDButton._tag] : LEDButton
+		},
+
 		data : ()=>({}),
+		
 		computed : {},
 		methods : {},
 		props : [],
@@ -29,7 +40,6 @@ div
 		setup () {},
 		async mounted () {}
 	}
-	
 </script>
 
 

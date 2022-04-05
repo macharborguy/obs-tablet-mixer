@@ -57,6 +57,8 @@ div.LOC_Channel_Row
 	flex-direction row
 	overflow-x scroll
 
+	background-color #515150
+
 </style>
 
 

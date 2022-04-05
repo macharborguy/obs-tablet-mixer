@@ -31,7 +31,7 @@ div.LOC_Fader_Block
 
 
 <script>
-	import MainFader from './MainFader'
+	import MainFader from '@/components/AudioMixer/Main/MainFader'
 	import FaderGroup from './FaderGroup'
 	import Fader from './Fader'
 
@@ -67,6 +67,8 @@ div.LOC_Fader_Block
 	display flex
 	flex-direction row
 	justify-content space-evenly
+	margin-right 5px
+
 
 </style>
 

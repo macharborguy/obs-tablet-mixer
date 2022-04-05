@@ -52,9 +52,19 @@ div.LOC_Fader_Group
 <style lang="stylus" scoped>
 
 .LOC_Fader_Group
+	background-color #1A1A1A
+	margin-right 5px
+	border-radius 5px
+
+	&:last-child
+		margin-right 0
+
 	> .faders
+		background-color #B0B2B4
 		display flex
 		flex-direction row
+		border-radius 5px
+		margin 5px
 
 </style>
 
