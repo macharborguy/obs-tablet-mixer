@@ -6,7 +6,7 @@
 
 
 <template lang="pug">
-div
+div.LOC_LED_Button
 	v-btn(
 		@touchstart="clickDown"
 		@touchend="clickUp"
@@ -14,10 +14,10 @@ div
 		:color="ActiveColor"
 		variant="contained"
 		:disabled="disabled"
-		:prepend-icon="prependedIcon"
-		:append-icon="appendedIcon"
 	)
 		slot
+		v-icon(v-if="appendIcon") {{ appendIcon }}
+
 </template>
 
 
@@ -38,7 +38,7 @@ div
 		name : 'LEDButton',
 		_tag : 'led-button',
 		
-		props : ['device','filter'],
+		props : ['device','filter','prependIcon','appendIcon'],
 
 		data : ()=>({
 			active		: false,
@@ -60,7 +60,7 @@ div
 				return {
 					filterName : this.filter.filter
 				}
-			}
+			},
 		},
 
 		methods : {
@@ -84,7 +84,17 @@ div
 
 
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+
+.v-btn
+	font-size 0.6em
+	display flex
+	flex-direction row
+	justify-content space-around
+	text-align center
+	flex-shrink 1
+
+</style>
 
 
 

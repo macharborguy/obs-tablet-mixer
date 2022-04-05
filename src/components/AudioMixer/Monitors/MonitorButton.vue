@@ -8,8 +8,9 @@
 
 <template lang="pug">
 div.LOC_Monitor_Button
-	led-button
+	led-button(:appendIcon="item.icon")
 		slot
+			slot(name="buttonText")
 </template>
 
 
@@ -17,12 +18,12 @@ div.LOC_Monitor_Button
 
 
 
-
-
+:group="group" :name="name" :device="device"
 
 <script>
 
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+	import wait from '@/functions/wait'
 
 	export default {
 		name : 'MonitorButton',
@@ -36,7 +37,7 @@ div.LOC_Monitor_Button
 		
 		computed : {},
 		methods : {},
-		props : [],
+		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
 		async mounted () {}

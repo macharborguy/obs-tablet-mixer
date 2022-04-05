@@ -8,8 +8,9 @@
 
 <template lang="pug">
 div.LOC_Duck_Button
-	led-button()
+	led-button(:appendIcon="item.icon")
 		slot
+			slot(name="buttonText")
 </template>
 
 
@@ -23,6 +24,7 @@ div.LOC_Duck_Button
 <script>
 
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+	import wait from '@/functions/wait'
 
 	export default {
 		name : 'DuckButton',
@@ -36,7 +38,7 @@ div.LOC_Duck_Button
 		
 		computed : {},
 		methods : {},
-		props : [],
+		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
 		async mounted () {}

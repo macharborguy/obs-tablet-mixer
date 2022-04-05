@@ -9,6 +9,8 @@
 <template lang="pug">
 div.LOC_Main_Button
 	led-button()
+		slot
+			slot(name="buttonText")
 </template>
 
 

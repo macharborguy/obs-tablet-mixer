@@ -12,11 +12,14 @@ div.LOC_Buttons_Block
 		template(v-if="group.length>0")
 			buttons-group(:group="group" :class="{[name]:name}" :device="device" :name="name")
 				template(v-if="name === 'mons'")
-					monitor-button(v-for="item of group" :key="item.name") {{item.name}}
+					monitor-button.button(v-for="item of group" :key="item.name" :item="item" :group="group" :name="name" :device="device")
+						template(#buttonText) TO
 				template(v-else-if="name === 'ndiout'")
-					ndi-button(v-for="item of group" :key="item.name") {{item.name}}
+					ndi-button.button(v-for="item of group" :key="item.name" :item="item" :group="group" :name="name" :device="device")
+						template(#buttonText) TO
 				template(v-else-if="name === 'ducks'")
-					duck-button(v-for="item of group" :key="item.name") {{item.name}}
+					duck-button.button(v-for="item of group" :key="item.name" :item="item" :group="group" :name="name" :device="device")
+						//- template(#buttonText) {{item.name}}
 </template>
 
 

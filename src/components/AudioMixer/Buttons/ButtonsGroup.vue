@@ -9,7 +9,8 @@
 <template lang="pug">
 div.LOC_Buttons_Group
 	header {{ name }}
-	slot
+	.buttons
+		slot
 </template>
 
 
@@ -47,6 +48,11 @@ div.LOC_Buttons_Group
 
 .LOC_Buttons_Group
 	background-color #1A1A1A
+	border-radius 5px
+	margin-bottom 5px
+
+	&:last-child
+		margin-bottom 0
 	
 	> header
 		text-align center
@@ -54,6 +60,13 @@ div.LOC_Buttons_Group
 		text-shadow 0 1px 0 lighten(black,30%)
 		font-variant small-caps
 		font-weight 700
+
+	> .buttons
+		display flex
+		flex-direction column
+		text-align center
+		justify-content centered
+		margin 5px
 
 </style>
 
@@ -65,5 +78,19 @@ div.LOC_Buttons_Group
 
 
 
-<style lang="stylus"></style>
+<style lang="stylus">
+
+
+.LOC_Buttons_Group
+	> .buttons
+		.button
+			.v-btn
+				margin-bottom 5px
+
+			&:last-child
+				.v-btn
+					margin-bottom 0
+
+
+</style>
 
