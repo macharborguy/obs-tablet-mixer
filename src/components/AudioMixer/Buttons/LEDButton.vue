@@ -94,6 +94,10 @@ div.LOC_LED_Button
 	text-align center
 	flex-shrink 1
 
+	&[disabled="disabled"]
+		background-color red !important
+
+
 </style>
 
 

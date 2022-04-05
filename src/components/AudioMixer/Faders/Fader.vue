@@ -55,6 +55,13 @@ div.LOC_Fader_Input
 		padding 5px
 		border-bottom 1px solid lighten(black,25%)
 		margin-bottom 10px
+		box-shadow inset 0 3px 0 0 darken(white,55%)
+		
+	&:first-child > header
+		border-radius 5px 0 0 0
+
+	&:last-child > header
+		border-radius 0 5px 0 0
 	
 	> input.vertical
 		-webkit-appearance slider-vertical

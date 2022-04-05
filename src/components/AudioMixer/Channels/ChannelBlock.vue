@@ -26,6 +26,10 @@ div.LOC_Channel_Block
 	import FaderBlock from '@/components/AudioMixer/Faders/FaderBlock'
 	import ButtonsBlock from '@/components/AudioMixer/Buttons/ButtonsBlock'
 
+	import wait				from '@/functions/wait'
+	import { forever }		from 'async'
+
+
 	export default {
 		name : 'ChannelBlock',
 		_tag : 'channel-block',

@@ -8,7 +8,7 @@
 
 <template lang="pug">
 div.LOC_NDI_Button
-	led-button(:appendIcon="item.icon")
+	led-button(:appendIcon="item.icon" :disabled="disabled" :clickHandler="clickHandler")
 		slot
 			slot(name="buttonText")
 </template>
@@ -24,7 +24,12 @@ div.LOC_NDI_Button
 <script>
 
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
+	
+	import ClickSounds from '@/sounds/ClickSounds.js'
 	import wait from '@/functions/wait'
+
+	const { log, error, warn } = console
+
 
 	export default {
 		name : 'NDIButton',
@@ -34,10 +39,21 @@ div.LOC_NDI_Button
 			[LEDButton._tag] : LEDButton
 		},
 
-		data : ()=>({}),
+		data : ()=>({
+			active : false,
+			disabled : true
+		}),
 		
 		computed : {},
-		methods : {},
+		
+		methods : {
+			...ClickSounds,
+			clickHandler () {
+
+			}
+		},
+
+
 		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
