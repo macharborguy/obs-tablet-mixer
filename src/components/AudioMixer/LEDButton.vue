@@ -29,6 +29,7 @@ div
 		setup () {},
 		async mounted () {}
 	}
+	
 </script>
 
 

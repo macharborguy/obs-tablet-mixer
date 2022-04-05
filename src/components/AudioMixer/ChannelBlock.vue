@@ -8,8 +8,8 @@
 
 <template lang="pug">
 div.LOC_Channel_Block
-	header Channel Block Heading
-	fader-block
+	header {{device.name}}
+	fader-block(:device="device")
 </template>
 
 
@@ -32,7 +32,7 @@ div.LOC_Channel_Block
 		data : ()=>({}),
 		computed : {},
 		methods : {},
-		props : [],
+		props : ['device'],
 		mixins : [],
 		setup () {},
 		async mounted () {}
@@ -51,6 +51,7 @@ div.LOC_Channel_Block
 
 .LOC_Channel_Block
 	border-right 1px solid rgba(black,35%)
+	padding-bottom 36px
 	> header
 		text-align center
 

@@ -7,8 +7,8 @@
 
 <template lang="pug">
 div.LOC_Fader_Input
-	header TO 
-		v-icon(size="small") mdi-discord
+	header(v-if="dataobj && dataobj.icon") 
+		v-icon(size="small") {{ dataobj.icon }}
 	input(type="range" :class="useVertical" :disabled="disabled").Fader
 </template>
 
@@ -32,7 +32,7 @@ div.LOC_Fader_Input
 			}
 		},
 		methods : {},
-		props : ['vertical', 'title', 'icon', 'disabled'],
+		props : ['vertical', 'disabled', 'device', 'dataobj'],
 		mixins : [],
 		setup () {},
 		async mounted () {}
@@ -55,6 +55,7 @@ div.LOC_Fader_Input
 	
 	> input.vertical
 		-webkit-appearance slider-vertical
+		width 60px
 </style>
 
 

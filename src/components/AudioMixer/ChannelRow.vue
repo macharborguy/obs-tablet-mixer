@@ -8,9 +8,7 @@
 
 <template lang="pug">
 div.LOC_Channel_Row
-	channel-block
-	channel-block
-	channel-block
+	channel-block(v-for="device of ChannelBlocks" :device="device" :key="device.name")
 </template>
 
 
@@ -31,7 +29,11 @@ div.LOC_Channel_Row
 			[ChannelBlock._tag] : ChannelBlock
 		},
 		data : ()=>({}),
-		computed : {},
+		computed : {
+			ChannelBlocks () {
+				return [...this.$store.state.devices]
+			}
+		},
 		methods : {},
 		props : [],
 		mixins : [],
@@ -53,6 +55,7 @@ div.LOC_Channel_Row
 .LOC_Channel_Row
 	display flex
 	flex-direction row
+	overflow-x scroll
 
 </style>
 

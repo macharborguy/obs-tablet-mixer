@@ -9,7 +9,9 @@
 <template lang="pug">
 div.LOC_Fader_Group
 	fader-group-header(:title="title")
-	fader-input(vertical="vertical" title="To Discord")
+	.faders
+		slot
+	
 </template>
 
 
@@ -22,14 +24,12 @@ div.LOC_Fader_Group
 
 <script>
 	import FGH from './FaderGroupHeader'
-	import Fader from './Fader'
 
 	export default {
 		name : 'FaderGroup',
 		_tag : 'fader-group',
 		components : {
-			[FGH._tag] : FGH,
-			[Fader._tag] : Fader
+			[FGH._tag] : FGH
 		},
 		data : ()=>({}),
 		computed : {},
@@ -52,7 +52,9 @@ div.LOC_Fader_Group
 <style lang="stylus" scoped>
 
 .LOC_Fader_Group
-	// color black
+	> .faders
+		display flex
+		flex-direction row
 
 </style>
 

@@ -50,6 +50,7 @@ div.LOC_Main_Fader
 <style lang="stylus" scoped>
 .LOC_Main_Fader
 	> header
+		margin-bottom 24px
 		text-align center
 </style>
 
