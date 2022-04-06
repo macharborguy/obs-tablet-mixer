@@ -87,12 +87,8 @@ div.LOC_LED_Button
 <style lang="stylus" scoped>
 
 .v-btn
-	font-size 0.6em
-	display flex
-	flex-direction row
-	justify-content space-around
+	font-size 1em
 	text-align center
-	flex-shrink 1
 
 	&[disabled="disabled"]
 		background-color red !important

@@ -53,7 +53,7 @@ div.LOC_Fader_Input
 		color black
 		text-align center
 		padding 5px
-		border-bottom 1px solid lighten(black,25%)
+		border-bottom 1px solid lighten(black,60%)
 		margin-bottom 10px
 		box-shadow inset 0 3px 0 0 darken(white,55%)
 		
@@ -62,6 +62,9 @@ div.LOC_Fader_Input
 
 	&:last-child > header
 		border-radius 0 5px 0 0
+
+	&:first-child:last-child > header
+		border-radius 5px 5px 0 0
 	
 	> input.vertical
 		-webkit-appearance slider-vertical

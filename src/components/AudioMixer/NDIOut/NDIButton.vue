@@ -39,10 +39,7 @@ div.LOC_NDI_Button
 			[LEDButton._tag] : LEDButton
 		},
 
-		data : ()=>({
-			active : false,
-			disabled : true
-		}),
+		data : ()=>({}),
 		
 		computed : {},
 		
