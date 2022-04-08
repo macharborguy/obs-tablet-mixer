@@ -49,6 +49,7 @@ div.LOC_Fader_Input
 
 <style lang="stylus" scoped>
 .LOC_Fader_Input
+	min-width 70px
 	> header
 		color black
 		text-align center
@@ -70,6 +71,7 @@ div.LOC_Fader_Input
 		-webkit-appearance slider-vertical
 		width 60px
 		min-height 250px
+		transform translateX(6px)
 		
 </style>
 

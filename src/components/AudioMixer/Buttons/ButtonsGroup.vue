@@ -7,7 +7,7 @@
 
 
 <template lang="pug">
-div.LOC_Buttons_Group
+div.LOC_Buttons_Group(v-show="visible")
 	header {{ name }}
 	.buttons
 		slot
@@ -23,16 +23,52 @@ div.LOC_Buttons_Group
 
 <script>
 
+	import wait from '@/functions/wait'
+
+
+	const { log, warn, error } = console
+
 	export default {
 		name : 'ButtonsGroup',
 		_tag : 'buttons-group',
-		data : ()=>({}),
-		computed : {},
-		methods : {},
+		data : ()=>({
+			visible : false
+		}),
+		computed : {
+			isVisible () {
+				return !!this.visible
+			}
+		},
+		methods : {
+			toggleVisibility () {
+				this.visible = !this.visible
+			}
+		},
 		props : ['group','name','device'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+		
+		
+		
+
+
+
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+			
+
+			this.emitter.emit('register-mixer-component',{
+				name	: `${this.device.slug}--${this.name}--btn-group`,
+				type	: 'button-group',
+				comp	: this,
+			})
+		}
+
+
+
+
+
+
 	}
 </script>
 

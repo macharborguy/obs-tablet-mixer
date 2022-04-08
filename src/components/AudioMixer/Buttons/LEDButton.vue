@@ -89,6 +89,7 @@ div.LOC_LED_Button
 .v-btn
 	font-size 1em
 	text-align center
+	width 100%
 
 	&[disabled="disabled"]
 		background-color red !important

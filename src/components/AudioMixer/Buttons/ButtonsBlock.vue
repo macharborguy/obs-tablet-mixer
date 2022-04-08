@@ -38,6 +38,8 @@ div.LOC_Buttons_Block
 	import MonitorButton from '@/components/AudioMixer/Monitors/MonitorButton'
 	import NDIButton from '@/components/AudioMixer/NDIOut/NDIButton'
 
+	import wait from '@/functions/wait'
+
 	export default {
 		name : 'ButtonsBlock',
 		_tag : 'buttons-block',
@@ -53,7 +55,10 @@ div.LOC_Buttons_Block
 		props : ['device','datagroups'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+		beforeMount () {},
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+		}
 	}
 </script>
 

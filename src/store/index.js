@@ -24,6 +24,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'XLR Mic',
+		slug		: 'xlr-mic',
 		source		: 'Behringer Main Out (For XLR Mic)',
 		ducks		: [],
 		mons		: [ 'headphones', 'voip' ],
@@ -32,6 +33,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'Music Player',
+		slug		: 'music-player',
 		source		: 'Pretzel Rocks Mirror',	// Rename later to "Music Player"
 		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord' ],
 		mons		: [ 'headphones', 'voip' ],
@@ -40,6 +42,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'Discord',
+		slug		: 'discord',
 		source		: '[ App Audio ] Discord',	// Rename later to "Music Player"
 		ducks		: [],
 		mons		: [ 'headphones' ],
@@ -48,6 +51,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'Gaming PC NDI-In',
+		slug		: 'gaming-pc-ndi-in',
 		source		: 'Game AUdio NDI',
 		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
 		mons		: [ 'headphones', 'voip' ],
@@ -56,6 +60,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'Elgato HD60',
+		slug		: 'elgato-hd60',
 		source		: '[ Elgato ] GameCapture HD60',
 		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord'],
 		mons		: [ 'headphones', 'voip' ],
@@ -64,6 +69,7 @@ const devices = [
 	{
 		index		: null,
 		name		: '👁️ ORBY',
+		slug		: 'orby',
 		source		: '[ Widget ] Orby',
 		ducks		: [],
 		mons		: [ 'headphones', 'voip' ],
@@ -73,6 +79,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'SoundAlerts',
+		slug		: 'sound-alerts',
 		source		: '[ Widget ] SoundAlerts',
 		ducks		: [],
 		mons		: [ 'headphones', 'voip' ],
@@ -81,6 +88,7 @@ const devices = [
 	{
 		index		: null,
 		name		: 'Old Alerts',
+		slug		: 'old-alerts',
 		source		: '[ Widget ] Legacy Alert Widget',
 		ducks		: [],
 		mons		: [ 'headphones', 'voip' ],
