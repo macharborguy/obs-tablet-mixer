@@ -24,7 +24,7 @@ div
 	import Manager from './Manager'
 
 
-	const MixerManager = Manager({})
+	let MixerManager
 
 
 
@@ -40,17 +40,18 @@ div
 		props			: [],
 		mixins			: [],
 		setup			() {},
-		beforeCreate	() {},
-		created			() {},
-		beforeMount		() {
-			this.emitter.on(
-				'register-mixer-component',
-				payload=>MixerManager.registerMixerComponent(payload)
-			)
+		beforeCreate	() {
+			MixerManager = Manager({
+				emitter : this.emitter
+			})
 		},
+		created			() {},
+		beforeMount		() {},
 		async mounted	() {}
 	}
 </script>
+
+
 
 
 

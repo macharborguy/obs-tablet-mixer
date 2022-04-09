@@ -8,7 +8,11 @@
 
 <template lang="pug">
 div.LOC_Buttons_Group(v-show="visible")
-	header {{ name }}
+	header(
+		@click="toggleVisibility"
+		v-on:touchstart="clickDown"
+		v-on:touchend="clickUp"
+	) {{ name }}
 	.buttons
 		slot
 </template>
@@ -22,17 +26,16 @@ div.LOC_Buttons_Group(v-show="visible")
 
 
 <script>
-
 	import wait from '@/functions/wait'
-
-
+	import ClickSounds from '@/sounds/ClickSounds.js'
+	
 	const { log, warn, error } = console
 
 	export default {
 		name : 'ButtonsGroup',
 		_tag : 'buttons-group',
 		data : ()=>({
-			visible : false
+			visible : true
 		}),
 		computed : {
 			isVisible () {
@@ -40,8 +43,21 @@ div.LOC_Buttons_Group(v-show="visible")
 			}
 		},
 		methods : {
+			...ClickSounds,
 			toggleVisibility () {
 				this.visible = !this.visible
+
+				this.emitter.emit('toggle-group-visibility', {
+					type : 'btn-group',
+					comp : this,
+					visibility : this.visible
+				})
+			},
+			makeVisible		() {
+				this.visible = true
+			},
+			makeHidden		() {
+				this.visible = false
 			}
 		},
 		props : ['group','name','device'],
@@ -55,11 +71,11 @@ div.LOC_Buttons_Group(v-show="visible")
 
 		async mounted () {
 			while (!this.$OBSWS._connected) await wait(50)
-			
+
 
 			this.emitter.emit('register-mixer-component',{
 				name	: `${this.device.slug}--${this.name}--btn-group`,
-				type	: 'button-group',
+				type	: 'btn-group',
 				comp	: this,
 			})
 		}
@@ -86,6 +102,7 @@ div.LOC_Buttons_Group(v-show="visible")
 	background-color #1A1A1A
 	border-radius 5px
 	margin-bottom 5px
+	min-width 85px
 
 	&:last-child
 		margin-bottom 0

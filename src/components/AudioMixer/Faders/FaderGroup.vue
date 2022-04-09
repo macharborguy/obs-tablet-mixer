@@ -7,8 +7,13 @@
 
 
 <template lang="pug">
-div.LOC_Fader_Group
-	fader-group-header(:title="title")
+div.LOC_Fader_Group(v-show="visible")
+	fader-group-header(
+		:title="title"
+		@click="toggleVisibility"
+		v-on:touchstart="clickDown"
+		v-on:touchend="clickUp"
+	)
 	.faders
 		slot
 	
@@ -23,7 +28,11 @@ div.LOC_Fader_Group
 
 
 <script>
-	import FGH from './FaderGroupHeader'
+	import FGH				from './FaderGroupHeader'
+	import wait				from '@/functions/wait'
+	import ClickSounds		from '@/sounds/ClickSounds.js'
+
+	const { log, warn, error } = console
 
 	export default {
 		name : 'FaderGroup',
@@ -31,13 +40,47 @@ div.LOC_Fader_Group
 		components : {
 			[FGH._tag] : FGH
 		},
-		data : ()=>({}),
-		computed : {},
-		methods : {},
-		props : ['title'],
+		data : ()=>({
+			visible : false
+		}),
+		computed : {
+			isVisible () {
+				return !!this.visible
+			}
+		},
+		methods : {
+			...ClickSounds,
+			toggleVisibility () {
+				this.visible = !this.visible
+
+				this.emitter.emit('toggle-group-visibility', {
+					type : 'fader-group',
+					comp : this,
+					visibility : this.visible
+				})
+			},
+			makeVisible		() {
+				this.visible = true
+			},
+			makeHidden		() {
+				this.visible = false
+			}
+		},
+		props : ['title','slug','device'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+
+
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+
+			this.emitter.emit('register-mixer-component',{
+				name	: `${this.device.slug}--${this.slug}--fader-group`,
+				type	: 'fader-group',
+				comp	: this,
+			})
+		}
+
 	}
 </script>
 

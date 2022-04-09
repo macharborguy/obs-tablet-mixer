@@ -6,11 +6,7 @@
 
 
 <template lang="pug">
-div.LOC_Fader_Group_Header.px-2
-	v-spacer
-	| {{ title }}
-	v-spacer
-	v-icon(size="x-small").pt-1.ml-2 mdi-window-minimize
+div.LOC_Fader_Group_Header.px-2 {{ title }}
 </template>
 
 

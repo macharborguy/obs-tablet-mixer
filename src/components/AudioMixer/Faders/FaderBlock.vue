@@ -11,15 +11,15 @@ div.LOC_Fader_Block
 	main-fader
 	
 	template(v-if="device.mons.length>0")
-		fader-group.Monitors(title="Mon.")
+		fader-group.Monitors(title="Mon." :device="device" slug="mons")
 			fader-input(v-for="mon of device.mons" :device="device" :key="mon.name" :dataobj="mon" vertical="vertical")
 	
 	template(v-if="device.ndiout.length>0")
-		fader-group.NDI(title="NDI")
+		fader-group.NDI(title="NDI" slug="ndiout" :device="device")
 			fader-input(v-for="ndi of device.ndiout" :device="device" :key="ndi.name" :dataobj="ndi"  vertical="vertical")
 	
 	template(v-if="device.ducks.length>0")
-		fader-group.Ducks(title="Ducks")
+		fader-group.Ducks(title="Ducks" slug="ducks" :device="device")
 			fader-input(v-for="duck of device.ducks" :device="device" :key="duck.name" :dataobj="duck"  vertical="vertical")
 </template>
 
