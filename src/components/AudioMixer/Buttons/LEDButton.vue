@@ -10,7 +10,7 @@ div.LOC_LED_Button
 	v-btn(
 		@touchstart="clickDown"
 		@touchend="clickUp"
-		@click="clickHandle"
+		@click="clickHandler"
 		:color="ActiveColor"
 		variant="contained"
 		:disabled="disabled"
@@ -29,8 +29,8 @@ div.LOC_LED_Button
 
 <script>
 
-	import ClickSounds from '@/sounds/ClickSounds.js'
-	import wait from '@/functions/wait'
+	import ClickSounds	from '@/sounds/ClickSounds.js'
+	import wait			from '@/functions/wait'
 
 	const { log, error, warn } = console
 
@@ -38,7 +38,13 @@ div.LOC_LED_Button
 		name : 'LEDButton',
 		_tag : 'led-button',
 		
-		props : ['device','filter','prependIcon','appendIcon'],
+		props : [
+			'device',
+			'filter',
+			'prependIcon',
+			'appendIcon',
+			'clickHandler'
+		],
 
 		data : ()=>({
 			active		: false,
@@ -64,8 +70,7 @@ div.LOC_LED_Button
 		},
 
 		methods : {
-			...ClickSounds,
-			clickHandle () {}
+			...ClickSounds
 		},
 
 		mixins : [],

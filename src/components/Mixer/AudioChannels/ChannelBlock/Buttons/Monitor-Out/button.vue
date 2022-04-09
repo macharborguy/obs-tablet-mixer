@@ -7,7 +7,7 @@ v-btn(
 	variant="contained"
 	:append-icon="mon.icon"
 	:disabled='disabled'
-).mb-2 TO
+).mb-2
 </template>
 
 <script>

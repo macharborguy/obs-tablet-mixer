@@ -8,7 +8,11 @@
 
 <template lang="pug">
 div.LOC_NDI_Button
-	led-button(:appendIcon="item.icon" :disabled="disabled" :clickHandler="clickHandler")
+	led-button(
+		:appendIcon="item.icon"
+		:disabled="disabled"
+		:clickHandler="clickHandler"
+	)
 		slot
 			slot(name="buttonText")
 </template>
@@ -45,16 +49,21 @@ div.LOC_NDI_Button
 		
 		methods : {
 			...ClickSounds,
-			clickHandler () {
-
-			}
+			clickHandler () {}
 		},
 
 
 		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+			this.emitter.emit('register-mixer-component',{
+				name	: `${this.device.slug}--${this.name}--${this.item.slug}--btn`,
+				type	: 'btn',
+				comp	: this,
+			})
+		}
 	}
 </script>
 

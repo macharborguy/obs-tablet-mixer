@@ -40,7 +40,15 @@ div.LOC_Monitor_Button
 		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+
+			this.emitter.emit('register-mixer-component',{
+				name	: `${this.device.slug}--${this.name}--${this.item.slug}--btn`,
+				type	: 'btn',
+				comp	: this,
+			})
+		}
 	}
 </script>
 

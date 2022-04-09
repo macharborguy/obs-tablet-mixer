@@ -26,6 +26,8 @@ div.LOC_Duck_Button
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
 	import wait from '@/functions/wait'
 
+	const { log, warn, error } = console
+
 	export default {
 		name : 'DuckButton',
 		_tag : 'duck-button',
@@ -41,7 +43,16 @@ div.LOC_Duck_Button
 		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
-		async mounted () {}
+		async mounted () {
+			while (!this.$OBSWS._connected) await wait(50)
+
+			this.emitter.emit('register-mixer-component',{
+				name	: `${this.device.slug}--${this.name}--${this.item.slug}--btn`,
+				type	: 'btn',
+				comp	: this,
+			})
+
+		}
 	}
 </script>
 

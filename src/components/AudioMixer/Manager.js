@@ -19,17 +19,22 @@ const MixerManager = (m={})=>{
 	}
 
 
-	const toggleFaderButtonGroupPairs = ({type,comp,visibility})=>{
-		if (type==='btn-group') {
+	const toggleFaderButtonGroupPairs = ({type,comp,visibility})=>FaderButtonGroupPairsFns[type]({comp,visibility})
+	const FaderButtonGroupPairsFns = {
+		'btn-group'		: ({comp,visibility})=>{
 			const compName = `${comp.device.slug}--${comp.name}--fader-group`
 			const fader = MixerComponents['fader-group'][compName]
 			fader.visible = !visibility
-		} else if (type==='fader-group') {
+		},
+		'fader-group'		: ({comp,visibility})=>{
 			const compName = `${comp.device.slug}--${comp.slug}--btn-group`
 			const btn = MixerComponents['btn-group'][compName]
 			btn.visible = !visibility
 		}
 	}
+
+
+
 
 
 

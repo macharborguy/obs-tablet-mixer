@@ -41,7 +41,7 @@ div.LOC_Channel_Block
 		computed : {
 			datagroups () {
 				const { mons, ndiout, ducks } = this.device
-				return {mons, ndiout, ducks}
+				return { mons, ndiout, ducks }
 			}
 		},
 		methods : {},
@@ -75,6 +75,7 @@ div.LOC_Channel_Block
 		color lighten(black, 65%)
 		font-weight 400px
 		text-shadow 0 1px 0 lighten(black, 35%)
+		padding 0 15px
 	
 	> section
 		display flex
