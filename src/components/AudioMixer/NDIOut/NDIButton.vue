@@ -10,6 +10,8 @@
 div.LOC_NDI_Button
 	led-button(
 		:appendIcon="item.icon"
+		:active="active"
+		:disabled="disabled"
 	)
 		slot
 			slot(name="buttonText")
@@ -32,6 +34,19 @@ div.LOC_NDI_Button
 	const { log, error, warn } = console
 
 
+	
+
+	const data = ()=>({
+		active : false,
+		disabled : true
+	})
+
+	const props = ['group','name','device','item']
+
+
+
+
+
 	export default {
 		name : 'NDIButton',
 		_tag : 'ndi-button',
@@ -40,14 +55,14 @@ div.LOC_NDI_Button
 			[LEDButton._tag] : LEDButton
 		},
 
-		data : ()=>({}),
+		data,
+		props,
 		
 		computed : {},
 		
 		methods : {},
 
 
-		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
 		async mounted () {
@@ -56,6 +71,13 @@ div.LOC_NDI_Button
 				name	: `${this.device.slug}--${this.name}--${this.item.slug}--btn`,
 				type	: 'btn',
 				comp	: this,
+			})
+
+			this.emitter.on('filter_visibility_state_change',filter=>{
+				const OfSameSource = !!(filter.sourceName===this.device.source)
+				const HasSameName = !!(filter.filterName===this.item.filterName)
+
+				if (OfSameSource && HasSameName) this.active = filter.filterEnabled
 			})
 		}
 	}

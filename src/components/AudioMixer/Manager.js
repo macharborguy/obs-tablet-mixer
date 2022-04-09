@@ -7,6 +7,9 @@ const MixerManager = (m={})=>{
 
 	const MixerComponents = {}
 
+
+
+
 	const InitType = type=>{
 		if (!MixerComponents[type]) MixerComponents[type] = {}
 	}
@@ -19,7 +22,38 @@ const MixerManager = (m={})=>{
 	}
 
 
+
+	const PopulateButtonStatus = ()=>{
+		// log(MixerComponents)
+		// log(Object.entries(MixerComponents['btn']).length)
+		for (const [,comp] of Object.entries(MixerComponents['btn'])) {
+			const sourceName = comp.device.source
+
+		
+			m.$OBSWS.send('GetSourceFilters',{
+				sourceName
+			}).then(({filters})=>{
+				const filter = filters.find(({name})=>{
+					return !!(name===comp.item.filterName)
+				})
+
+				if (filter) {
+					comp.active = filter.enabled
+					comp.disabled = false
+					log(`found -> ${comp.device.name} -> ${comp.item.filterName}`)
+				}
+			})
+		}
+	}
+
+
+
+
+
+
 	const toggleFaderButtonGroupPairs = ({type,comp,visibility})=>FaderButtonGroupPairsFns[type]({comp,visibility})
+	
+	
 	const FaderButtonGroupPairsFns = {
 		'btn-group'		: ({comp,visibility})=>{
 			const compName = `${comp.device.slug}--${comp.name}--fader-group`
@@ -34,8 +68,12 @@ const MixerManager = (m={})=>{
 	}
 
 
+	
 
-
+	m.$OBSWS.on('SourceFilterVisibilityChanged',(filter)=>{
+		if (filter.filterName.includes('Move')) return;
+		m.emitter.emit('filter_visibility_state_change', filter)
+	})
 
 
 
@@ -50,6 +88,9 @@ const MixerManager = (m={})=>{
 	}).forEach(payload=>m.emitter.on(...payload))
 
 
+	m.start = ()=>{
+		PopulateButtonStatus()
+	}
 
 	return m
 }

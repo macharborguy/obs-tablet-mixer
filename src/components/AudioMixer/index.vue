@@ -23,6 +23,9 @@ div
 	import ChannelRow from './Channels/ChannelRow'
 	import Manager from './Manager'
 
+	import wait from '@/functions/wait'
+
+	const { log, warn, error } = console
 
 	let MixerManager
 
@@ -42,12 +45,19 @@ div
 		setup			() {},
 		beforeCreate	() {
 			MixerManager = Manager({
-				emitter : this.emitter
+				emitter		: this.emitter,
+				'$OBSWS'	: this.$OBSWS,
+				'$store'	: this.$store
 			})
 		},
 		created			() {},
 		beforeMount		() {},
-		async mounted	() {}
+		async mounted	() {
+			while (!this.$OBSWS._connected) await wait(50)
+
+			MixerManager.start()
+
+		}
 	}
 </script>
 

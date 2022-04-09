@@ -3,19 +3,19 @@ import { createStore } from 'vuex'
 
 
 const monitors = {
-	headphones	: ()=>({ slug: 'headphones', name: 'To Headphones', icon: 'mdi-headphones'}),
-	voip		: ()=>({ slug: 'voip', name: 'To VoIP', icon: 'mdi-phone-voip' })
+	headphones	: ()=>({ slug: 'headphones', name: 'To Headphones', icon: 'mdi-headphones', filterName: 'To Headphones' }),
+	voip		: ()=>({ slug: 'voip', name: 'To VoIP', icon: 'mdi-phone-voip', filterName: 'To VoIP' })
 }
 
 const ndiout = {
-	'gaming-pc-voip'	: ()=>({ slug: 'gaming-pc-voip', name: 'To Gaming PC VoIP', icon: 'mdi-gamepad-square' })
+	'gaming-pc-voip'	: ()=>({ slug: 'gaming-pc-voip', name: 'To Gaming PC VoIP', filterName: 'To Gaming PC VoIP', icon: 'mdi-gamepad-square' })
 }
 
 const ducks = {
-	'old-alerts' : ()=>({ slug: 'old-alerts', name : 'Old Alerts', icon: 'mdi-bullhorn', filter: 'Alert Ducker 1 - Legacy Alerts' }),
-	'sound-alerts' : ()=>({ slug: 'sound-alerts', name : 'SoundAlerts', icon: 'mdi-volume-high', filter: 'Alert Ducker 2 - SoundAlerts' }),
-	'microphone' : ()=>({ slug: 'microphone', name : 'Microphone', icon: 'mdi-microphone', filter: 'Mic Ducker' }),
-	'discord' : ()=>({ slug: 'discord', name : 'Discord', icon: 'mdi-discord', filter: 'Discord Ducker' }),
+	'old-alerts' : ()=>({ slug: 'old-alerts', name : 'Old Alerts', icon: 'mdi-bullhorn', filterName: 'Alert Ducker 1 - Legacy Alerts' }),
+	'sound-alerts' : ()=>({ slug: 'sound-alerts', name : 'SoundAlerts', icon: 'mdi-volume-high', filterName: 'Alert Ducker 2 - SoundAlerts' }),
+	'microphone' : ()=>({ slug: 'microphone', name : 'Microphone', icon: 'mdi-microphone', filterName: 'Mic Ducker' }),
+	'discord' : ()=>({ slug: 'discord', name : 'Discord', icon: 'mdi-discord', filterName: 'Discord Ducker' }),
 }
 
 

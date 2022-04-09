@@ -34,43 +34,68 @@ div.LOC_LED_Button
 
 	const { log, error, warn } = console
 
+
+
+
+
+
+
+
+
+
+
+
+	const props = [
+		'device',
+		'filter',
+		'prependIcon',
+		'appendIcon',
+		'clickHandler',
+
+		
+		'active',
+		'disabled'
+	]
+
+
+
+
+
+
+	const data = ()=>({})
+
+
+
+
+
+
+
+	const methods = { ...ClickSounds }
+
+
+
+
+
+
+
+
+
+
 	export default {
 		name : 'LEDButton',
 		_tag : 'led-button',
-		
-		props : [
-			'device',
-			'filter',
-			'prependIcon',
-			'appendIcon',
-			'clickHandler'
-		],
 
-		data : ()=>({
-			active		: false,
-			disabled	: true
-		}),
+		props,
+		data,
+		methods,
+
 		
 		computed : {
 			ActiveColor () {
 				if (this.disabled===true) return 'grey'
 				if (this.active===false) return 'red'
 				return 'green'
-			},
-			SourceName () {
-				return {
-					sourceName : this.device.source
-				}
-			},
-			FilterName () {
-				return {
-					filterName : this.filter.filter
-				}
-			},
-		},
-
-		methods : {
-			...ClickSounds
+			}
 		},
 
 		mixins : [],
