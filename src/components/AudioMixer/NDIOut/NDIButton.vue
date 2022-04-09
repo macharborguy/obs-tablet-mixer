@@ -10,8 +10,6 @@
 div.LOC_NDI_Button
 	led-button(
 		:appendIcon="item.icon"
-		:disabled="disabled"
-		:clickHandler="clickHandler"
 	)
 		slot
 			slot(name="buttonText")
@@ -29,7 +27,6 @@ div.LOC_NDI_Button
 
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
 	
-	import ClickSounds from '@/sounds/ClickSounds.js'
 	import wait from '@/functions/wait'
 
 	const { log, error, warn } = console
@@ -47,10 +44,7 @@ div.LOC_NDI_Button
 		
 		computed : {},
 		
-		methods : {
-			...ClickSounds,
-			clickHandler () {}
-		},
+		methods : {},
 
 
 		props : ['group','name','device','item'],

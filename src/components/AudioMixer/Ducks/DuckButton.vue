@@ -43,6 +43,9 @@ div.LOC_Duck_Button
 		props : ['group','name','device','item'],
 		mixins : [],
 		setup () {},
+
+
+		
 		async mounted () {
 			while (!this.$OBSWS._connected) await wait(50)
 
