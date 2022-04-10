@@ -24,8 +24,6 @@ const MixerManager = (m={})=>{
 
 
 	const PopulateButtonStatus = ()=>{
-		// log(MixerComponents)
-		// log(Object.entries(MixerComponents['btn']).length)
 		for (const [,comp] of Object.entries(MixerComponents['btn'])) {
 			const sourceName = comp.device.source
 
@@ -84,13 +82,16 @@ const MixerManager = (m={})=>{
 
 	Object.entries({
 		'register-mixer-component' : registerMixerComponent,
-		'toggle-group-visibility' : toggleFaderButtonGroupPairs
+		'toggle-group-visibility' : toggleFaderButtonGroupPairs,
+		'btn-click' : ({comp})=>log(comp)
 	}).forEach(payload=>m.emitter.on(...payload))
 
 
 	m.start = ()=>{
 		PopulateButtonStatus()
 	}
+
+
 
 	return m
 }

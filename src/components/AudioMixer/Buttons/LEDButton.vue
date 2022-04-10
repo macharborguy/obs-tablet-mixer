@@ -31,7 +31,7 @@ div.LOC_LED_Button
 
 	import ClickSounds	from '@/sounds/ClickSounds.js'
 	import wait			from '@/functions/wait'
-
+	
 	const { log, error, warn } = console
 
 
@@ -50,7 +50,6 @@ div.LOC_LED_Button
 		'filter',
 		'prependIcon',
 		'appendIcon',
-		'clickHandler',
 
 		
 		'active',
@@ -70,7 +69,15 @@ div.LOC_LED_Button
 
 
 
-	const methods = { ...ClickSounds }
+	const methods = {
+		...ClickSounds,
+		
+		clickHandler () {
+			this.emitter.emit('btn-click', {
+				comp : this
+			})
+		}
+	}
 
 
 
