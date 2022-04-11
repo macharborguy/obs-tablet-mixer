@@ -1,4 +1,6 @@
 
+import { forever } from 'async'
+import wait from '@/functions/wait'
 
 const { log, warn, error } = console
 
@@ -38,7 +40,6 @@ const MixerManager = (m={})=>{
 				if (filter) {
 					comp.active = filter.enabled
 					comp.disabled = false
-					log(`found -> ${comp.device.name} -> ${comp.item.filterName}`)
 				}
 			})
 		}
@@ -73,7 +74,42 @@ const MixerManager = (m={})=>{
 		m.emitter.emit('filter_visibility_state_change', filter)
 	})
 
+	// m.$OBSWS.on('SceneItemTransformChanged',payload=>{
+	// 	log(payload)
+	// })
 
+
+
+	forever(async next=>{
+		while (!m.$OBSWS._connected) await wait(50)
+		
+		await m.$OBSWS.send('ExecuteBatch',{
+			requests : [
+				{
+					'request-type' : 'SetSourceSettings',
+					sourceName : '[ App Audio ] Pretzel Rocks',
+					sourceSettings : {
+						exclude : true
+					}
+				},
+
+				{
+					'request-type' : 'Sleep',
+					sleepMillis : 5
+				},
+				
+				{
+					'request-type' : 'SetSourceSettings',
+					sourceName : '[ App Audio ] Pretzel Rocks',
+					sourceSettings : {
+						exclude : false
+					}
+				}
+			]
+		}).then(payload=>log(payload))
+
+		return await wait(15*60000)
+	})
 
 
 
