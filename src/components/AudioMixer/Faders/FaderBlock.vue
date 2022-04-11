@@ -8,7 +8,7 @@
 
 <template lang="pug">
 div.LOC_Fader_Block
-	main-fader
+	main-fader(:device="device")
 	
 	template(v-if="device.mons.length>0")
 		fader-group.Monitors(title="Mon." :device="device" slug="mons")

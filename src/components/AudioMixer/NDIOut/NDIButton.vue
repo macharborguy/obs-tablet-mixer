@@ -60,7 +60,20 @@ div.LOC_NDI_Button
 		
 		computed : {},
 		
-		methods : {},
+		methods : {
+			handler () {
+				const switchTo		= (!this.active)
+				const payload		= {
+					sourceName		: this.device.source,
+					filterName		: this.item.filterName,
+					filterEnabled	: switchTo
+				}
+
+				this.$OBSWS.send('SetSourceFilterVisibility', payload).then(({status})=>{
+					if (status==='ok') this.active = switchTo
+				}).catch(err=>error(err))
+			}
+		},
 
 
 		mixins : [],

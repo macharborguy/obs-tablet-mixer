@@ -72,9 +72,10 @@ div.LOC_LED_Button
 	const methods = {
 		...ClickSounds,
 		
-		clickHandler () {
+		clickHandler (event) {
 			this.emitter.emit('btn-click', {
-				comp : this
+				event,
+				comp : this.$parent
 			})
 		}
 	}

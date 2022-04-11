@@ -8,7 +8,10 @@
 
 <template lang="pug">
 div.LOC_Main_Button
-	led-button()
+	led-button(
+		:active="active"
+		:disabled="disabled"
+	)
 		slot
 			slot(name="buttonText")
 </template>
@@ -25,6 +28,19 @@ div.LOC_Main_Button
 
 	import LEDButton from '@/components/AudioMixer/Buttons/LEDButton'
 
+	import wait from '@/functions/wait'
+
+	const { log, error, warn } = console
+
+	const data = ()=>({
+		active : false,
+		disabled : true
+	})
+
+	const props = ['group','name','device','item']
+
+
+
 	export default {
 		name : 'MainButton',
 		_tag : 'main-button',
@@ -33,11 +49,10 @@ div.LOC_Main_Button
 			[LEDButton._tag] : LEDButton
 		},
 
-		data : ()=>({}),
+		data, props,
 		
 		computed : {},
 		methods : {},
-		props : [],
 		mixins : [],
 		setup () {},
 		async mounted () {}
@@ -52,7 +67,12 @@ div.LOC_Main_Button
 
 
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+
+div.LOC_Main_Button
+	margin-bottom 6px
+
+</style>
 
 
 

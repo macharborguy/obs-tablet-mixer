@@ -2,6 +2,9 @@
 import { forever } from 'async'
 import wait from '@/functions/wait'
 
+import { debounce } from 'underscore'
+
+
 const { log, warn, error } = console
 
 
@@ -10,7 +13,9 @@ const MixerManager = (m={})=>{
 	const MixerComponents = {}
 
 
-
+	const Initialize = debounce(()=>{
+		PopulateButtonStatus()
+	},500)
 
 	const InitType = type=>{
 		if (!MixerComponents[type]) MixerComponents[type] = {}
@@ -21,12 +26,22 @@ const MixerManager = (m={})=>{
 		if (comp===undefined) throw new Error('Comp is undefined')
 		InitType(type)
 		MixerComponents[type][name] = comp
+		Initialize()
 	}
 
 
 
+
+
+
+
+
+
+
+
+	
 	const PopulateButtonStatus = ()=>{
-		for (const [,comp] of Object.entries(MixerComponents['btn'])) {
+		for (const [name,comp] of Object.entries(MixerComponents['btn'])) {
 			const sourceName = comp.device.source
 
 		
@@ -74,6 +89,22 @@ const MixerManager = (m={})=>{
 		m.emitter.emit('filter_visibility_state_change', filter)
 	})
 
+
+
+
+
+
+
+
+	const buttonClick = ({event,comp})=>{
+		if (comp.handler) comp.handler()
+	}
+
+
+
+
+
+
 	// m.$OBSWS.on('SceneItemTransformChanged',payload=>{
 	// 	log(payload)
 	// })
@@ -119,13 +150,10 @@ const MixerManager = (m={})=>{
 	Object.entries({
 		'register-mixer-component' : registerMixerComponent,
 		'toggle-group-visibility' : toggleFaderButtonGroupPairs,
-		'btn-click' : ({comp})=>log(comp)
+		'btn-click' : buttonClick
 	}).forEach(payload=>m.emitter.on(...payload))
 
 
-	m.start = ()=>{
-		PopulateButtonStatus()
-	}
 
 
 

@@ -54,9 +54,6 @@ div
 		beforeMount		() {},
 		async mounted	() {
 			while (!this.$OBSWS._connected) await wait(50)
-
-			MixerManager.start()
-
 		}
 	}
 </script>

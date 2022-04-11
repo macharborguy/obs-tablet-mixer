@@ -9,7 +9,15 @@
 div.LOC_Fader_Input
 	header(v-if="dataobj && dataobj.icon") 
 		v-icon(size="small") {{ dataobj.icon }}
-	input(type="range" :class="useVertical" :disabled="disabled").Fader
+	input(
+		type="range"
+		:class="useVertical"
+		@input="handler"
+		:min="min"
+		:max="max"
+		:step="step"
+		:value="theValue"
+	).Fader
 </template>
 
 
@@ -22,22 +30,58 @@ div.LOC_Fader_Input
 
 <script>
 
+	import wait from '@/functions/wait'
+
+
+	const { log, error, warn } = console
+
+
+
+	const data = ()=>({})
+
+	const computed = {
+		useVertical () {
+			return { vertical : this.vertical }
+		}
+	}
+
+	const methods = {}
+
+	const props		= {
+		vertical	: Boolean,
+		device		: Object,
+		dataobj		: Object,
+		min			: [Number,String],
+		max			: [Number,String],
+		step		: [Number,String],
+		handler		: Function,
+		theValue	: [Number,String]
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	export default {
 		name : 'FaderInput',
 		_tag : 'fader-input',
-		data : ()=>({}),
-		computed : {
-			useVertical () {
-				return { vertical : this.vertical }
-			}
-		},
-		methods : {},
-		props : ['vertical', 'disabled', 'device', 'dataobj'],
+		data,
+		computed,
+		methods,
+		props,
 		mixins : [],
 		setup () {},
 		async mounted () {}
 	}
 </script>
+
 
 
 
