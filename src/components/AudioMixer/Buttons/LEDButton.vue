@@ -50,10 +50,10 @@ div.LOC_LED_Button
 		'filter',
 		'prependIcon',
 		'appendIcon',
-
 		
 		'active',
-		'disabled'
+		'disabled',
+		'color'
 	]
 
 
@@ -100,6 +100,7 @@ div.LOC_LED_Button
 		
 		computed : {
 			ActiveColor () {
+				if (this.color) return this.color
 				if (this.disabled===true) return 'grey'
 				if (this.active===false) return 'red'
 				return 'green'
