@@ -80,36 +80,36 @@ const MixerManager = (m={})=>{
 
 
 
-	forever(async next=>{
-		while (!m.$OBSWS._connected) await wait(50)
+	// forever(async next=>{
+	// 	while (!m.$OBSWS._connected) await wait(50)
 		
-		await m.$OBSWS.send('ExecuteBatch',{
-			requests : [
-				{
-					'request-type' : 'SetSourceSettings',
-					sourceName : '[ App Audio ] Pretzel Rocks',
-					sourceSettings : {
-						exclude : true
-					}
-				},
+	// 	await m.$OBSWS.send('ExecuteBatch',{
+	// 		requests : [
+	// 			{
+	// 				'request-type' : 'SetSourceSettings',
+	// 				sourceName : '[ App Audio ] Pretzel Rocks',
+	// 				sourceSettings : {
+	// 					exclude : true
+	// 				}
+	// 			},
 
-				{
-					'request-type' : 'Sleep',
-					sleepMillis : 5
-				},
+	// 			{
+	// 				'request-type' : 'Sleep',
+	// 				sleepMillis : 5
+	// 			},
 				
-				{
-					'request-type' : 'SetSourceSettings',
-					sourceName : '[ App Audio ] Pretzel Rocks',
-					sourceSettings : {
-						exclude : false
-					}
-				}
-			]
-		}).then(payload=>log(payload))
+	// 			{
+	// 				'request-type' : 'SetSourceSettings',
+	// 				sourceName : '[ App Audio ] Pretzel Rocks',
+	// 				sourceSettings : {
+	// 					exclude : false
+	// 				}
+	// 			}
+	// 		]
+	// 	}).then(payload=>log(payload))
 
-		return await wait(15*60000)
-	})
+	// 	return await wait(15*60000)
+	// })
 
 
 
