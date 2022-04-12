@@ -84,7 +84,6 @@ div.LOC_Main_Button
 			this.$OBSWS.send('GetMute',{
 				source : this.device.source
 			}).then(payload=>{
-				log(payload)
 				this.muted = payload.muted
 				this.disabled = false
 			}).catch(err=>error(err))
