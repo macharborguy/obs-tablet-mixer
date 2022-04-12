@@ -5,7 +5,7 @@ v-app()
 	v-main
 		audio-mixer
 		div.leatherDivider
-		//- loc-source-switcher
+		loc-source-switcher
 		div.leatherDivider
 </template>
 
