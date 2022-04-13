@@ -3,7 +3,6 @@
 v-app
 	loc-system-bar
 	v-main
-		channel-row
 		div.leatherDivider
 		loc-source-switcher
 		div.leatherDivider
