@@ -13,7 +13,7 @@ import 'vue-toastification/dist/index.css'
 
 
 import ChannelRow from '@/components/Mixer/AudioChannels/ChannelRow'
-import SourceSwitchers from '@/components/Mixer/SourceSwitchers'
+import SourceSwitchers from '@/components/SourceSwitchers'
 import SystemBar from '@/components/SystemBar'
 
 import { SocketIO, SocketIOLegacy } from '@/plugins/socket-io'
