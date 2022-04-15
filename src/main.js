@@ -34,6 +34,5 @@ const Application = createApp(App)
 
 ;[AudioMixer,SourceSwitchers,SystemBar].forEach(comp=>Application.component(comp._tag, comp))
 
-
 Application.config.globalProperties.emitter = emitter
 Application.mount('#app')
