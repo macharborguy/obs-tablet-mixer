@@ -3,34 +3,19 @@ div.loc-input-slider--wrap(:class="useVertical")
 	input(type="range" min="" max="" value="" ).loc-input-slider
 </template>
 
-
 <script>
 
-
-
-export default {
-	name			: 'ChannelFader',
-	data			: ()=>({}),
-
-	props			: ['vertical'],
-
-	methods			: {},
-	computed		: {
-		useVertical	() {
-			return { vertical : this.vertical }
+	export default {
+		name : 'InputSlider',
+		data : ()=>({}),
+		props : ['vertical'],
+		computed : {
+			useVertical () {
+				return { vertical : this.vertical }
+			}
 		}
-	},
-
-	setup			() {},
-
-	async mounted	() {}
-}
-
-
+	}
 </script>
-
-
-
 
 
 <style lang="stylus" scoped>

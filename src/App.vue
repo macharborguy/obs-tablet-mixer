@@ -1,9 +1,9 @@
 
 <template lang="pug">
-v-app()
+v-app
 	loc-system-bar
 	v-main
-		audio-mixer
+		channel-row
 		div.leatherDivider
 		loc-source-switcher
 		div.leatherDivider
@@ -23,10 +23,6 @@ body
 html, body, html body, .v-application
 	margin 0
 	padding 0
-
-
-*
-	// outline 1px dotted rgba(black,45%)
 
 
 </style>
@@ -72,7 +68,7 @@ const Application = {
 
 	async mounted () {
 		while (!this.$OBSWS._connected) await wait(50)
-		
+
 		//this.$OBSWS.on('SourceVolumeChanged', ({volume,volumeDb})=>log([(volume*100).toFixed(3),`${volumeDb.toFixed(3)} Db`]))
 	}
 
