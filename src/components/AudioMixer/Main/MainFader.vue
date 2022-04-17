@@ -15,9 +15,9 @@ div.LOC_Main_Fader
 		vertical="vertical"
 		:device="device"
 		:handler="HandleSlide"
-		min="-100"
-		max="0"
-		step="0.005"
+		min=".05"
+		max="1"
+		step="0.001"
 		:theValue="volume"
 	)
 
@@ -49,7 +49,7 @@ div.LOC_Main_Fader
 		obs.send('SetVolume',{
 			source,
 			volume : pos,
-			useDecibel : true
+			useDecibel : false
 		})
 	}, 100)
 
@@ -87,7 +87,7 @@ div.LOC_Main_Fader
 			
 			this.$OBSWS.send('GetVolume',{
 				source : this.device.source,
-				useDecibel : true
+				useDecibel : false
 			}).then((data)=>{
 				this.volume = data.volume
 			})

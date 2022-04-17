@@ -54,6 +54,15 @@ div
 		beforeMount		() {},
 		async mounted	() {
 			while (!this.$OBSWS._connected) await wait(50)
+			
+			
+			
+			// this.$OBSWS.send('GetSourceFilterInfo',{
+			// 	sourceName	: 'Behringer Main Out (For XLR Mic)',
+			// 	filterName	: 'To Headphones'
+			// }).then(payload=>log(payload))
+
+
 		}
 	}
 </script>

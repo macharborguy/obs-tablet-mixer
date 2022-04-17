@@ -12,6 +12,7 @@ const ndiout = {
 }
 
 const ducks = {
+	'giveaways' : ()=>({ slug: 'giveaways', name : 'Giveaways', icon: 'mdi-gift', filterName: 'SE Giveaways' }),
 	'old-alerts' : ()=>({ slug: 'old-alerts', name : 'Old Alerts', icon: 'mdi-bullhorn', filterName: 'Alert Ducker 1 - Legacy Alerts' }),
 	'sound-alerts' : ()=>({ slug: 'sound-alerts', name : 'SoundAlerts', icon: 'mdi-volume-high', filterName: 'Alert Ducker 2 - SoundAlerts' }),
 	'microphone' : ()=>({ slug: 'microphone', name : 'Microphone', icon: 'mdi-microphone', filterName: 'Mic Ducker' }),
@@ -90,6 +91,15 @@ const devices = [
 		name		: 'Old Alerts',
 		slug		: 'old-alerts',
 		source		: '[ Widget ] Legacy Alert Widget',
+		ducks		: [],
+		mons		: [ 'headphones', 'voip' ],
+		ndiout		: []
+	},
+	{
+		index		: null,
+		name		: 'Giveaways',
+		slug		: 'giveaways',
+		source		: 'SE Giveaways',
 		ducks		: [],
 		mons		: [ 'headphones', 'voip' ],
 		ndiout		: []
