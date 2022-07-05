@@ -33,9 +33,9 @@ const devices = [
 	},
 	{
 		index		: null,
-		name		: 'Music Player',
+		name		: 'Music Outputs',
 		slug		: 'music-player',
-		source		: 'Pretzel Rocks Mirror',	// Rename later to "Music Player"
+		source		: 'Music App Outputs',	// Rename later to "Music Player"
 		ducks		: [ 'old-alerts', 'sound-alerts', 'microphone', 'discord' ],
 		mons		: [ 'headphones', 'voip' ],
 		ndiout		: []
@@ -44,7 +44,7 @@ const devices = [
 		index		: null,
 		name		: 'Discord',
 		slug		: 'discord',
-		source		: '[ App Audio ] Discord',	// Rename later to "Music Player"
+		source		: 'Discord from Acer Monitor',	// Rename later to "Music Player"
 		ducks		: [],
 		mons		: [ 'headphones' ],
 		ndiout		: []
